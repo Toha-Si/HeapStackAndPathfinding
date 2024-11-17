@@ -1,0 +1,3 @@
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/build/CMakeFiles/test.dir
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/build/CMakeFiles/edit_cache.dir
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/build/CMakeFiles/rebuild_cache.dir

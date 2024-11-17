@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+#Not needed for now
+*.pbf
