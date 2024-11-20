@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/testOSM.cpp" "CMakeFiles/test.dir/testOSM.cpp.o" "gcc" "CMakeFiles/test.dir/testOSM.cpp.o.d"
+  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp" "CMakeFiles/test.dir/PathfindingCityMap.cpp.o" "gcc" "CMakeFiles/test.dir/PathfindingCityMap.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

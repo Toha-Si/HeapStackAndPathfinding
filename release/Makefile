@@ -129,29 +129,29 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
-testOSM.o: testOSM.cpp.o
-.PHONY : testOSM.o
+PathfindingCityMap.o: PathfindingCityMap.cpp.o
+.PHONY : PathfindingCityMap.o
 
 # target to build an object file
-testOSM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/testOSM.cpp.o
-.PHONY : testOSM.cpp.o
+PathfindingCityMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.o
+.PHONY : PathfindingCityMap.cpp.o
 
-testOSM.i: testOSM.cpp.i
-.PHONY : testOSM.i
+PathfindingCityMap.i: PathfindingCityMap.cpp.i
+.PHONY : PathfindingCityMap.i
 
 # target to preprocess a source file
-testOSM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/testOSM.cpp.i
-.PHONY : testOSM.cpp.i
+PathfindingCityMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.i
+.PHONY : PathfindingCityMap.cpp.i
 
-testOSM.s: testOSM.cpp.s
-.PHONY : testOSM.s
+PathfindingCityMap.s: PathfindingCityMap.cpp.s
+.PHONY : PathfindingCityMap.s
 
 # target to generate assembly for a file
-testOSM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/testOSM.cpp.s
-.PHONY : testOSM.cpp.s
+PathfindingCityMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.s
+.PHONY : PathfindingCityMap.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... testOSM.o"
-	@echo "... testOSM.i"
-	@echo "... testOSM.s"
+	@echo "... PathfindingCityMap.o"
+	@echo "... PathfindingCityMap.i"
+	@echo "... PathfindingCityMap.s"
 .PHONY : help
 
 

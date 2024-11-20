@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/test.dir/testOSM.cpp.o -o test  -lz -lpthread -lexpat -lbz2
+/usr/bin/c++ -rdynamic CMakeFiles/test.dir/PathfindingCityMap.cpp.o -o test  -lz -lpthread -lexpat -lbz2

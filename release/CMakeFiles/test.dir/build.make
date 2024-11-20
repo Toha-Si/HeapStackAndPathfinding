@@ -72,28 +72,28 @@ include CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/codegen:
 .PHONY : CMakeFiles/test.dir/codegen
 
-CMakeFiles/test.dir/testOSM.cpp.o: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/testOSM.cpp.o: /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/testOSM.cpp
-CMakeFiles/test.dir/testOSM.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/testOSM.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/testOSM.cpp.o -MF CMakeFiles/test.dir/testOSM.cpp.o.d -o CMakeFiles/test.dir/testOSM.cpp.o -c /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/testOSM.cpp
+CMakeFiles/test.dir/PathfindingCityMap.cpp.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp
+CMakeFiles/test.dir/PathfindingCityMap.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/PathfindingCityMap.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/PathfindingCityMap.cpp.o -MF CMakeFiles/test.dir/PathfindingCityMap.cpp.o.d -o CMakeFiles/test.dir/PathfindingCityMap.cpp.o -c /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp
 
-CMakeFiles/test.dir/testOSM.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/testOSM.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/testOSM.cpp > CMakeFiles/test.dir/testOSM.cpp.i
+CMakeFiles/test.dir/PathfindingCityMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/PathfindingCityMap.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp > CMakeFiles/test.dir/PathfindingCityMap.cpp.i
 
-CMakeFiles/test.dir/testOSM.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/testOSM.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/testOSM.cpp -o CMakeFiles/test.dir/testOSM.cpp.s
+CMakeFiles/test.dir/PathfindingCityMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/PathfindingCityMap.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp -o CMakeFiles/test.dir/PathfindingCityMap.cpp.s
 
 # Object files for target test
 test_OBJECTS = \
-"CMakeFiles/test.dir/testOSM.cpp.o"
+"CMakeFiles/test.dir/PathfindingCityMap.cpp.o"
 
 # External object files for target test
 test_EXTERNAL_OBJECTS =
 
-test: CMakeFiles/test.dir/testOSM.cpp.o
+test: CMakeFiles/test.dir/PathfindingCityMap.cpp.o
 test: CMakeFiles/test.dir/build.make
 test: /usr/lib/x86_64-linux-gnu/libz.so
 test: /usr/lib/x86_64-linux-gnu/libexpat.so

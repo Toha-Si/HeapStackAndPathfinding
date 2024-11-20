@@ -17,7 +17,7 @@ if(NOT PROTOZERO_FOUND)
     message(WARNING "Protozero not found!\n")
 endif()
 
-add_executable(test testOSM.cpp)
+add_executable(test PathfindingCityMap.cpp)
 target_link_libraries(test ${OSMIUM_IO_LIBRARIES})
 # find_package(OpenGL REQUIRED)
 # find_package(GLUT REQUIRED)
