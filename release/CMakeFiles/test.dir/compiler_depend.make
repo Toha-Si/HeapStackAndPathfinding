@@ -77,6 +77,7 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/minmax.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/misc.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/options.hpp \
+  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/progress_bar.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/visitor.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/buffer_tmpl.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/config.hpp \
@@ -88,6 +89,10 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/types.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/varint.hpp \
   /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/version.hpp \
+  /usr/include/GL/gl.h \
+  /usr/include/GL/glew.h \
+  /usr/include/GL/glu.h \
+  /usr/include/GLFW/glfw3.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -189,7 +194,9 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
   /usr/include/c++/9/cassert \
   /usr/include/c++/9/cctype \
   /usr/include/c++/9/cerrno \
+  /usr/include/c++/9/cfloat \
   /usr/include/c++/9/chrono \
+  /usr/include/c++/9/climits \
   /usr/include/c++/9/clocale \
   /usr/include/c++/9/cmath \
   /usr/include/c++/9/condition_variable \
@@ -250,6 +257,137 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
   /usr/include/expat_external.h \
   /usr/include/fcntl.h \
   /usr/include/features.h \
+  /usr/include/glm/common.hpp \
+  /usr/include/glm/detail/_fixes.hpp \
+  /usr/include/glm/detail/_vectorize.hpp \
+  /usr/include/glm/detail/compute_common.hpp \
+  /usr/include/glm/detail/compute_vector_relational.hpp \
+  /usr/include/glm/detail/func_common.inl \
+  /usr/include/glm/detail/func_exponential.inl \
+  /usr/include/glm/detail/func_geometric.inl \
+  /usr/include/glm/detail/func_integer.inl \
+  /usr/include/glm/detail/func_matrix.inl \
+  /usr/include/glm/detail/func_packing.inl \
+  /usr/include/glm/detail/func_trigonometric.inl \
+  /usr/include/glm/detail/func_vector_relational.inl \
+  /usr/include/glm/detail/qualifier.hpp \
+  /usr/include/glm/detail/setup.hpp \
+  /usr/include/glm/detail/type_half.hpp \
+  /usr/include/glm/detail/type_half.inl \
+  /usr/include/glm/detail/type_mat2x2.hpp \
+  /usr/include/glm/detail/type_mat2x2.inl \
+  /usr/include/glm/detail/type_mat2x3.hpp \
+  /usr/include/glm/detail/type_mat2x3.inl \
+  /usr/include/glm/detail/type_mat2x4.hpp \
+  /usr/include/glm/detail/type_mat2x4.inl \
+  /usr/include/glm/detail/type_mat3x2.hpp \
+  /usr/include/glm/detail/type_mat3x2.inl \
+  /usr/include/glm/detail/type_mat3x3.hpp \
+  /usr/include/glm/detail/type_mat3x3.inl \
+  /usr/include/glm/detail/type_mat3x4.hpp \
+  /usr/include/glm/detail/type_mat3x4.inl \
+  /usr/include/glm/detail/type_mat4x2.hpp \
+  /usr/include/glm/detail/type_mat4x2.inl \
+  /usr/include/glm/detail/type_mat4x3.hpp \
+  /usr/include/glm/detail/type_mat4x3.inl \
+  /usr/include/glm/detail/type_mat4x4.hpp \
+  /usr/include/glm/detail/type_mat4x4.inl \
+  /usr/include/glm/detail/type_vec1.hpp \
+  /usr/include/glm/detail/type_vec1.inl \
+  /usr/include/glm/detail/type_vec2.hpp \
+  /usr/include/glm/detail/type_vec2.inl \
+  /usr/include/glm/detail/type_vec3.hpp \
+  /usr/include/glm/detail/type_vec3.inl \
+  /usr/include/glm/detail/type_vec4.hpp \
+  /usr/include/glm/detail/type_vec4.inl \
+  /usr/include/glm/exponential.hpp \
+  /usr/include/glm/ext/matrix_double2x2.hpp \
+  /usr/include/glm/ext/matrix_double2x2_precision.hpp \
+  /usr/include/glm/ext/matrix_double2x3.hpp \
+  /usr/include/glm/ext/matrix_double2x3_precision.hpp \
+  /usr/include/glm/ext/matrix_double2x4.hpp \
+  /usr/include/glm/ext/matrix_double2x4_precision.hpp \
+  /usr/include/glm/ext/matrix_double3x2.hpp \
+  /usr/include/glm/ext/matrix_double3x2_precision.hpp \
+  /usr/include/glm/ext/matrix_double3x3.hpp \
+  /usr/include/glm/ext/matrix_double3x3_precision.hpp \
+  /usr/include/glm/ext/matrix_double3x4.hpp \
+  /usr/include/glm/ext/matrix_double3x4_precision.hpp \
+  /usr/include/glm/ext/matrix_double4x2.hpp \
+  /usr/include/glm/ext/matrix_double4x2_precision.hpp \
+  /usr/include/glm/ext/matrix_double4x3.hpp \
+  /usr/include/glm/ext/matrix_double4x3_precision.hpp \
+  /usr/include/glm/ext/matrix_double4x4.hpp \
+  /usr/include/glm/ext/matrix_double4x4_precision.hpp \
+  /usr/include/glm/ext/matrix_float2x2.hpp \
+  /usr/include/glm/ext/matrix_float2x2_precision.hpp \
+  /usr/include/glm/ext/matrix_float2x3.hpp \
+  /usr/include/glm/ext/matrix_float2x3_precision.hpp \
+  /usr/include/glm/ext/matrix_float2x4.hpp \
+  /usr/include/glm/ext/matrix_float2x4_precision.hpp \
+  /usr/include/glm/ext/matrix_float3x2.hpp \
+  /usr/include/glm/ext/matrix_float3x2_precision.hpp \
+  /usr/include/glm/ext/matrix_float3x3.hpp \
+  /usr/include/glm/ext/matrix_float3x3_precision.hpp \
+  /usr/include/glm/ext/matrix_float3x4.hpp \
+  /usr/include/glm/ext/matrix_float3x4_precision.hpp \
+  /usr/include/glm/ext/matrix_float4x2.hpp \
+  /usr/include/glm/ext/matrix_float4x2_precision.hpp \
+  /usr/include/glm/ext/matrix_float4x3.hpp \
+  /usr/include/glm/ext/matrix_float4x3_precision.hpp \
+  /usr/include/glm/ext/matrix_float4x4.hpp \
+  /usr/include/glm/ext/matrix_float4x4_precision.hpp \
+  /usr/include/glm/ext/vector_bool2.hpp \
+  /usr/include/glm/ext/vector_bool2_precision.hpp \
+  /usr/include/glm/ext/vector_bool3.hpp \
+  /usr/include/glm/ext/vector_bool3_precision.hpp \
+  /usr/include/glm/ext/vector_bool4.hpp \
+  /usr/include/glm/ext/vector_bool4_precision.hpp \
+  /usr/include/glm/ext/vector_double2.hpp \
+  /usr/include/glm/ext/vector_double2_precision.hpp \
+  /usr/include/glm/ext/vector_double3.hpp \
+  /usr/include/glm/ext/vector_double3_precision.hpp \
+  /usr/include/glm/ext/vector_double4.hpp \
+  /usr/include/glm/ext/vector_double4_precision.hpp \
+  /usr/include/glm/ext/vector_float2.hpp \
+  /usr/include/glm/ext/vector_float2_precision.hpp \
+  /usr/include/glm/ext/vector_float3.hpp \
+  /usr/include/glm/ext/vector_float3_precision.hpp \
+  /usr/include/glm/ext/vector_float4.hpp \
+  /usr/include/glm/ext/vector_float4_precision.hpp \
+  /usr/include/glm/ext/vector_int2.hpp \
+  /usr/include/glm/ext/vector_int2_precision.hpp \
+  /usr/include/glm/ext/vector_int3.hpp \
+  /usr/include/glm/ext/vector_int3_precision.hpp \
+  /usr/include/glm/ext/vector_int4.hpp \
+  /usr/include/glm/ext/vector_int4_precision.hpp \
+  /usr/include/glm/ext/vector_uint2.hpp \
+  /usr/include/glm/ext/vector_uint2_precision.hpp \
+  /usr/include/glm/ext/vector_uint3.hpp \
+  /usr/include/glm/ext/vector_uint3_precision.hpp \
+  /usr/include/glm/ext/vector_uint4.hpp \
+  /usr/include/glm/ext/vector_uint4_precision.hpp \
+  /usr/include/glm/fwd.hpp \
+  /usr/include/glm/geometric.hpp \
+  /usr/include/glm/glm.hpp \
+  /usr/include/glm/integer.hpp \
+  /usr/include/glm/mat2x2.hpp \
+  /usr/include/glm/mat2x3.hpp \
+  /usr/include/glm/mat2x4.hpp \
+  /usr/include/glm/mat3x2.hpp \
+  /usr/include/glm/mat3x3.hpp \
+  /usr/include/glm/mat3x4.hpp \
+  /usr/include/glm/mat4x2.hpp \
+  /usr/include/glm/mat4x3.hpp \
+  /usr/include/glm/mat4x4.hpp \
+  /usr/include/glm/matrix.hpp \
+  /usr/include/glm/packing.hpp \
+  /usr/include/glm/simd/platform.h \
+  /usr/include/glm/trigonometric.hpp \
+  /usr/include/glm/vec2.hpp \
+  /usr/include/glm/vec3.hpp \
+  /usr/include/glm/vec4.hpp \
+  /usr/include/glm/vector_relational.hpp \
   /usr/include/limits.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/falloc.h \
@@ -408,12 +546,15 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
   /usr/include/x86_64-linux-gnu/sys/wait.h \
   /usr/include/zconf.h \
   /usr/include/zlib.h \
+  /usr/lib/gcc/x86_64-linux-gnu/9/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stdint.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h
 
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/9/include/stdint.h:
 
@@ -423,818 +564,1094 @@ CMakeFiles/test.dir/PathfindingCityMap.cpp.o: /home/anton/Documents/polytech_pro
 
 /usr/lib/gcc/x86_64-linux-gnu/9/include/limits.h:
 
-/usr/include/zlib.h:
-
 /usr/include/zconf.h:
-
-/usr/include/x86_64-linux-gnu/sys/types.h:
-
-/usr/include/x86_64-linux-gnu/sys/stat.h:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/gthr.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/ctype_base.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/cpu_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/atomic_word.h:
-
-/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/c++locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
-
-/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigthread.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigstack.h:
-
-/usr/include/x86_64-linux-gnu/bits/signum.h:
-
-/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
-
-/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
-
-/usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
-
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-/usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
-/usr/include/string.h:
-
-/usr/include/stdio.h:
-
-/usr/include/strings.h:
-
-/usr/include/signal.h:
-
-/usr/include/wctype.h:
-
-/usr/include/sched.h:
-
-/usr/include/pthread.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
-
-/usr/include/math.h:
-
-/usr/include/locale.h:
-
-/usr/include/linux/types.h:
-
-/usr/include/c++/9/bits/erase_if.h:
-
-/usr/include/c++/9/bits/vector.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/c++/9/cassert:
-
-/usr/include/c++/9/cmath:
-
-/usr/include/c++/9/bits/deque.tcc:
-
-/usr/include/c++/9/map:
-
-/usr/include/c++/9/cstdio:
-
-/usr/include/c++/9/iterator:
-
-/usr/include/c++/9/bits/cpp_type_traits.h:
-
-/usr/include/c++/9/bits/locale_facets.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm.hpp:
-
-/usr/include/c++/9/bits/char_traits.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/c++/9/ios:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:
-
-/usr/include/c++/9/bits/basic_ios.h:
-
-/usr/include/c++/9/bits/atomic_futex.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl.h:
-
-/usr/include/c++/9/bits/algorithmfwd.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file_compression.hpp:
-
-/usr/include/c++/9/ext/concurrence.h:
-
-/usr/include/bzlib.h:
 
 /usr/include/x86_64-linux-gnu/sys/wait.h:
 
-/usr/include/asm-generic/errno-base.h:
+/usr/include/stdint.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/data_view.hpp:
+/usr/include/c++/9/unordered_map:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/builder/builder.hpp:
+/usr/include/c++/9/bits/refwrap.h:
 
-/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+/usr/include/c++/9/tuple:
 
-/usr/include/c++/9/bits/std_abs.h:
+/usr/include/c++/9/thread:
 
-/usr/include/c++/9/ext/type_traits.h:
+/usr/include/x86_64-linux-gnu/c++/9/bits/error_constants.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+/usr/include/c++/9/system_error:
 
-/usr/include/asm-generic/types.h:
+/usr/include/c++/9/streambuf:
 
-/usr/include/asm-generic/bitsperlong.h:
+/usr/include/glm/ext/matrix_double2x2_precision.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity.hpp:
+/usr/include/c++/9/iostream:
 
-/usr/include/c++/9/ext/aligned_buffer.h:
+/usr/include/c++/9/initializer_list:
 
-/usr/include/asm-generic/int-ll64.h:
+/usr/include/glm/ext/matrix_float2x4.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/types.hpp:
+/usr/include/c++/9/future:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/queue_util.hpp:
+/usr/include/c++/9/ext/string_conversions.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/compatibility.hpp:
+/usr/include/c++/9/bits/stl_raw_storage_iter.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/iterators.hpp:
+/usr/include/c++/9/ext/new_allocator.h:
+
+/usr/include/glm/mat3x2.hpp:
+
+/usr/include/c++/9/debug/debug.h:
+
+/usr/include/c++/9/bits/stl_vector.h:
+
+/usr/include/x86_64-linux-gnu/sys/prctl.h:
+
+/usr/include/c++/9/mutex:
+
+/usr/include/c++/9/chrono:
+
+/usr/include/c++/9/algorithm:
+
+/usr/include/c++/9/cfloat:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file_compression.hpp:
+
+/usr/include/c++/9/cerrno:
+
+/usr/include/c++/9/memory:
+
+/usr/include/c++/9/cwctype:
+
+/usr/include/c++/9/cctype:
+
+/usr/include/c++/9/bits/uses_allocator.h:
+
+/usr/include/c++/9/ext/numeric_traits.h:
+
+/usr/include/c++/9/bits/unordered_map.h:
+
+/usr/include/c++/9/bits/unique_ptr.h:
+
+/usr/include/c++/9/bits/streambuf_iterator.h:
+
+/usr/include/c++/9/bits/stl_tempbuf.h:
+
+/usr/include/c++/9/cstdlib:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/expat_external.h:
+
+/usr/include/c++/9/bits/stl_relops.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_statx.h:
+
+/usr/include/c++/9/bits/stl_pair.h:
+
+/usr/include/c++/9/bits/stl_multimap.h:
+
+/usr/include/c++/9/bits/stl_heap.h:
+
+/usr/include/c++/9/bits/alloc_traits.h:
+
+/usr/include/c++/9/bits/stl_map.h:
+
+/usr/include/c++/9/bits/functexcept.h:
+
+/usr/include/glm/mat2x2.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/c++/9/bits/stl_deque.h:
+
+/usr/include/glm/detail/func_integer.inl:
+
+/usr/include/stdlib.h:
+
+/usr/include/c++/9/bits/stl_algobase.h:
+
+/usr/include/c++/9/type_traits:
+
+/usr/include/c++/9/bits/std_function.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/c++/9/bits/sstream.tcc:
+
+/usr/include/c++/9/clocale:
+
+/usr/include/glm/detail/type_mat4x4.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/c++/9/bits/shared_ptr.h:
+
+/usr/include/c++/9/backward/binders.h:
+
+/usr/include/c++/9/ext/atomicity.h:
+
+/usr/include/endian.h:
+
+/usr/include/glm/ext/matrix_float4x3_precision.hpp:
+
+/usr/include/c++/9/cwchar:
+
+/usr/include/glm/ext/vector_uint2_precision.hpp:
+
+/usr/include/glm/geometric.hpp:
+
+/usr/include/c++/9/bits/range_access.h:
+
+/usr/include/c++/9/ctime:
+
+/usr/include/c++/9/bits/ptr_traits.h:
+
+/usr/include/c++/9/queue:
+
+/usr/include/c++/9/bits/unique_lock.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/c++/9/bits/ostream_insert.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf_input_format.hpp:
+
+/usr/include/c++/9/bits/stl_iterator_base_types.h:
+
+/usr/include/glm/ext/matrix_float2x2_precision.hpp:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/c++/9/bits/memoryfwd.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
+
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/ctype_inline.h:
+
+/usr/include/c++/9/bits/locale_classes.tcc:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref_list.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
+/usr/include/c++/9/bits/istream.tcc:
+
+/usr/include/c++/9/bits/ios_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/usr/include/c++/9/bits/invoke.h:
+
+/usr/include/c++/9/bits/hashtable_policy.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/input_iterator.hpp:
+
+/usr/include/c++/9/bits/hash_bytes.h:
+
+/usr/include/c++/9/bits/stl_iterator.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
 
-/usr/include/c++/9/bits/exception_ptr.h:
-
-/usr/include/linux/posix_types.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/config.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/writer_options.hpp:
-
-/usr/include/c++/9/bits/codecvt.h:
-
-/usr/include/features.h:
-
-/usr/include/c++/9/iosfwd:
-
-/usr/include/c++/9/bits/allocated_ptr.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/misc.hpp:
-
-/usr/include/c++/9/array:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/double.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/varint.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
-
-/usr/include/c++/9/bits/basic_string.h:
-
-/usr/include/c++/9/bits/postypes.h:
-
-/usr/include/assert.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/util.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/function_wrapper.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
-
-/usr/include/asm-generic/errno.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/relation.hpp:
 
 /usr/include/c++/9/bits/fstream.tcc:
 
 /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/types_from_string.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/object.hpp:
 
-/usr/include/c++/9/bits/stl_queue.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/delta.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/types.hpp:
+/usr/include/c++/9/ostream:
 
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+/usr/include/glm/ext/matrix_double2x3.hpp:
 
-/usr/include/c++/9/bits/functional_hash.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity_bits.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/9/bits/gthr-default.h:
+/usr/include/unistd.h:
 
-/usr/include/x86_64-linux-gnu/bits/sigaction.h:
+/usr/include/c++/9/climits:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/pbf_reader.hpp:
+/usr/include/x86_64-linux-gnu/bits/statx.h:
 
-/usr/include/errno.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/progress_bar.hpp:
 
-/usr/include/c++/9/atomic:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/tag.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/reader_iterator.hpp:
+/usr/include/glm/ext/matrix_double4x3_precision.hpp:
 
-/usr/include/c++/9/bits/move.h:
+/usr/include/c++/9/fstream:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/zlib.hpp:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/compression.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/input_format.hpp:
+/usr/include/c++/9/string:
 
-/usr/include/fcntl.h:
+/usr/include/c++/9/debug/assertions.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/read_write.hpp:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/coordinates.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/xml_input.hpp:
+/usr/include/x86_64-linux-gnu/bits/timex.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/location.hpp:
+/usr/include/c++/9/bits/std_mutex.h:
 
-/usr/include/c++/9/bits/concept_check.h:
+/usr/include/c++/9/bits/stl_construct.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+/usr/include/c++/9/bits/localefwd.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/opl_input_format.hpp:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/item_type.hpp:
 
-/usr/include/c++/9/bits/hash_bytes.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/opl_input.hpp:
 
-/usr/include/c++/9/bits/allocator.h:
+/usr/include/glm/mat3x4.hpp:
 
-/usr/include/c++/9/bits/streambuf.tcc:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/pbf_input.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
+/usr/include/c++/9/bits/hashtable.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/xml_input_format.hpp:
+/usr/include/time.h:
 
-/usr/include/c++/9/backward/auto_ptr.h:
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf_decoder.hpp:
+/usr/include/expat.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/box.hpp:
+/usr/include/x86_64-linux-gnu/asm/types.h:
 
-/usr/include/alloca.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/area.hpp:
+/usr/include/c++/9/exception:
 
-/usr/include/c++/9/istream:
+/usr/include/glm/detail/func_matrix.inl:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/changeset.hpp:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/util.hpp:
 
-/usr/include/c++/9/bits/exception.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/o5m_input.hpp:
 
-/usr/include/ctype.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/memory.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/error.hpp:
+/usr/include/c++/9/vector:
 
-/usr/include/c++/9/ext/alloc_traits.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/config.hpp:
 
-/usr/include/linux/errno.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/haversine.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node.hpp:
+/usr/include/glm/ext/matrix_float3x4.hpp:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/file.hpp:
+/usr/include/c++/9/condition_variable:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/read_thread.hpp:
+/usr/include/c++/9/bits/stream_iterator.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/o5m_input_format.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/c++/9/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/9/sstream:
-
-/usr/include/c++/9/typeinfo:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/minmax.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/string_util.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/fwd.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/buffer_tmpl.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/opl_parser_functions.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/collection.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item_iterator.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/queue.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/bzip2_compression.hpp:
-
-/usr/include/c++/9/bits/nested_exception.h:
-
-/usr/include/c++/9/cstddef:
-
-/usr/include/c++/9/bits/basic_string.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
-
-/usr/include/c++/9/utility:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/handler.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
-
-/usr/include/c++/9/bits/atomic_base.h:
-
-/usr/include/c++/9/bits/exception_defines.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/any_input.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/pbf_message.hpp:
-
-/usr/include/c++/9/bits/locale_classes.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/exception.hpp:
-
-/usr/include/c++/9/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/sys/ucontext.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/pbf.hpp:
+/usr/include/glm/detail/type_mat3x2.inl:
 
 /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/options.hpp:
 
-/usr/include/c++/9/condition_variable:
+/usr/include/c++/9/bits/uniform_int_dist.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/pbf.hpp:
+
+/usr/include/c++/9/stdlib.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/exception.hpp:
+
+/usr/include/c++/9/bits/locale_classes.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/pbf_message.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/any_input.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/timestamp.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file_format.hpp:
+
+/usr/include/c++/9/bits/exception_defines.h:
+
+/usr/include/glm/detail/type_vec4.inl:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/handler.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
+
+/usr/include/c++/9/bits/basic_string.tcc:
+
+/usr/include/c++/9/bits/nested_exception.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/bzip2_compression.hpp:
+
+/usr/include/glm/detail/qualifier.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/queue.hpp:
+
+/usr/include/glm/detail/func_geometric.inl:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item_iterator.hpp:
+
+/usr/include/c++/9/cstddef:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/collection.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/opl_parser_functions.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/buffer_tmpl.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/fwd.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/PathfindingCityMap.cpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/string_util.hpp:
+
+/usr/include/c++/9/typeinfo:
+
+/usr/include/c++/9/sstream:
+
+/usr/lib/gcc/x86_64-linux-gnu/9/include/float.h:
+
+/usr/include/c++/9/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/9/bits/atomic_base.h:
+
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/o5m_input_format.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/file.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node.hpp:
+
+/usr/include/c++/9/ext/alloc_traits.h:
+
+/usr/include/glm/ext/vector_uint4.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/minmax.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/error.hpp:
 
 /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/protobuf_tags.hpp:
 
 /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/gzip_compression.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+/usr/include/glm/ext/vector_uint4_precision.hpp:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/9/bits/exception.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/changeset.hpp:
+
+/usr/include/glm/detail/type_vec2.hpp:
+
+/usr/include/c++/9/istream:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/area.hpp:
 
 /usr/include/c++/9/bits/stl_iterator_base_funcs.h:
 
 /usr/include/c++/9/bits/shared_ptr_atomic.h:
 
-/usr/include/c++/9/ratio:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/header.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/haversine.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/config.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/way.hpp:
-
-/usr/include/c++/9/vector:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/any_compression.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/memory.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/buffer.hpp:
-
-/usr/include/linux/limits.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/o5m_input.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/util.hpp:
-
-/usr/include/c++/9/exception:
-
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
-/usr/include/expat.h:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/time.h:
-
-/usr/include/c++/9/bits/hashtable.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/opl_input.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/item_type.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/visitor.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/pbf_input.hpp:
-
-/usr/include/c++/9/bits/localefwd.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
-
-/usr/include/c++/9/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/9/bits/stl_construct.h:
-
-/usr/include/x86_64-linux-gnu/bits/timex.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/coordinates.hpp:
-
-/usr/include/c++/9/debug/assertions.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file_format.hpp:
-
-/usr/include/c++/9/string:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/compression.hpp:
-
-/usr/include/c++/9/fstream:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/reader.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/object.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/delta.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/version.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/tag.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/statx.h:
-
-/usr/include/unistd.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity_bits.hpp:
-
-/usr/include/c++/9/ostream:
-
-/usr/include/c++/9/bits/stl_iterator.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/relation.hpp:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/input_iterator.hpp:
-
-/usr/include/c++/9/bits/hashtable_policy.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/file.hpp:
-
-/usr/include/c++/9/functional:
-
-/usr/include/c++/9/bits/invoke.h:
-
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/usr/include/c++/9/bits/ios_base.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/c++/9/bits/istream.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref_list.hpp:
-
-/usr/include/c++/9/bits/locale_classes.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/9/bits/ctype_inline.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item.hpp:
-
-/usr/include/c++/9/bits/locale_facets.h:
-
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
-
-/usr/include/c++/9/bits/memoryfwd.h:
-
-/usr/include/x86_64-linux-gnu/bits/stat.h:
+/usr/include/glm/ext/vector_bool4_precision.hpp:
 
 /usr/include/c++/9/bits/ostream.tcc:
 
-/usr/include/stdc-predef.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf_decoder.hpp:
 
-/usr/include/c++/9/bits/stl_iterator_base_types.h:
+/usr/include/asm-generic/posix_types.h:
 
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf_input_format.hpp:
+/usr/include/c++/9/backward/auto_ptr.h:
 
-/usr/include/c++/9/bits/ostream_insert.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/xml_input_format.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+/usr/include/c++/9/bits/streambuf.tcc:
 
-/usr/include/c++/9/queue:
-
-/usr/include/c++/9/bits/ptr_traits.h:
-
-/usr/include/c++/9/ctime:
-
-/usr/include/c++/9/bits/range_access.h:
-
-/usr/include/c++/9/cwchar:
-
-/usr/include/c++/9/ext/atomicity.h:
-
-/usr/include/c++/9/backward/binders.h:
-
-/usr/include/c++/9/bits/shared_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/builder/osm_object_builder.hpp:
-
-/usr/include/c++/9/bits/shared_ptr_base.h:
-
-/usr/include/c++/9/bits/sstream.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/c++/9/bits/allocator.h:
 
 /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/pool.hpp:
 
-/usr/include/c++/9/bits/std_function.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/reader.hpp:
 
-/usr/include/c++/9/bits/stl_algo.h:
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
-/usr/include/c++/9/type_traits:
+/usr/include/c++/9/bits/concept_check.h:
 
-/usr/include/c++/9/bits/stl_algobase.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/header.hpp:
 
-/usr/include/stdlib.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/location.hpp:
 
-/usr/include/c++/9/bits/stl_deque.h:
+/usr/include/glm/mat4x2.hpp:
 
-/usr/include/c++/9/bits/stl_bvector.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/xml_input.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/read_write.hpp:
 
-/usr/include/c++/9/bits/functexcept.h:
+/usr/include/fcntl.h:
 
-/usr/include/c++/9/bits/stl_map.h:
+/usr/include/GL/gl.h:
 
-/usr/include/c++/9/bits/stl_uninitialized.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/input_format.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/zlib.hpp:
+
+/usr/include/c++/9/bits/move.h:
+
+/usr/include/c++/9/bits/cxxabi_init_exception.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/reader_iterator.hpp:
+
+/usr/include/errno.h:
 
 /usr/include/c++/9/bits/basic_ios.tcc:
-
-/usr/include/c++/9/bits/alloc_traits.h:
-
-/usr/include/c++/9/bits/stl_heap.h:
-
-/usr/include/c++/9/bits/stl_multimap.h:
-
-/usr/include/c++/9/bits/stl_pair.h:
-
-/usr/include/linux/stat.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_statx.h:
-
-/usr/include/c++/9/bits/stl_relops.h:
-
-/usr/include/expat_external.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/c++/9/cstdlib:
-
-/usr/include/c++/9/bits/stl_tempbuf.h:
-
-/usr/include/c++/9/bits/stream_iterator.h:
-
-/usr/include/c++/9/bits/streambuf_iterator.h:
-
-/usr/include/c++/9/bits/uniform_int_dist.h:
-
-/usr/include/c++/9/bits/unique_ptr.h:
-
-/usr/include/c++/9/bits/unordered_map.h:
-
-/usr/include/c++/9/bits/uses_allocator.h:
-
-/usr/include/c++/9/bits/predefined_ops.h:
-
-/usr/include/c++/9/cctype:
-
-/usr/include/c++/9/cwctype:
-
-/usr/include/c++/9/memory:
-
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/timestamp.hpp:
-
-/usr/include/c++/9/cerrno:
-
-/usr/include/c++/9/algorithm:
-
-/usr/include/c++/9/chrono:
-
-/usr/include/c++/9/bits/stringfwd.h:
-
-/usr/include/c++/9/mutex:
-
-/usr/include/x86_64-linux-gnu/sys/prctl.h:
-
-/usr/include/c++/9/bits/stl_tree.h:
-
-/usr/include/c++/9/bits/stl_vector.h:
-
-/usr/include/c++/9/cstdint:
-
-/usr/include/c++/9/cstring:
-
-/usr/include/c++/9/debug/debug.h:
-
-/usr/include/wchar.h:
-
-/usr/include/c++/9/bits/unique_lock.h:
-
-/usr/include/c++/9/deque:
-
-/usr/include/c++/9/bits/std_mutex.h:
-
-/usr/include/c++/9/ext/new_allocator.h:
-
-/usr/include/c++/9/limits:
 
 /usr/include/c++/9/bits/cxxabi_forced.h:
 
 /usr/include/limits.h:
 
-/usr/include/c++/9/ext/numeric_traits.h:
+/usr/include/x86_64-linux-gnu/bits/sigaction.h:
 
-/usr/include/c++/9/bits/stl_raw_storage_iter.h:
+/usr/include/x86_64-linux-gnu/c++/9/bits/gthr-default.h:
 
-/usr/include/c++/9/ext/string_conversions.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/types.hpp:
 
-/usr/include/c++/9/future:
+/usr/include/GLFW/glfw3.h:
 
-/usr/include/c++/9/initializer_list:
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/usr/include/c++/9/bits/parse_numbers.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/visitor.hpp:
 
-/usr/include/c++/9/iostream:
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
-/usr/include/c++/9/new:
+/usr/include/asm-generic/errno.h:
 
-/usr/include/x86_64-linux-gnu/bits/statx-generic.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/function_wrapper.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/thread/util.hpp:
+
+/usr/include/assert.h:
+
+/usr/include/c++/9/bits/postypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/error_t.h:
+
+/usr/include/glm/common.hpp:
+
+/usr/include/c++/9/bits/allocated_ptr.h:
+
+/usr/include/glm/ext/vector_float3_precision.hpp:
+
+/usr/include/c++/9/iosfwd:
+
+/usr/include/glm/ext/matrix_float4x2.hpp:
+
+/usr/include/features.h:
+
+/usr/include/c++/9/bits/codecvt.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/writer_options.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/config.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/iterators.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/queue_util.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/types.hpp:
+
+/usr/include/asm-generic/int-ll64.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/builder/osm_object_builder.hpp:
+
+/usr/include/c++/9/cmath:
+
+/usr/include/c++/9/utility:
+
+/usr/include/c++/9/cassert:
+
+/usr/include/c++/9/bits/vector.tcc:
+
+/usr/include/c++/9/bits/erase_if.h:
+
+/usr/include/c++/9/ratio:
+
+/usr/include/glm/ext/matrix_float3x3.hpp:
+
+/usr/include/GL/glew.h:
+
+/usr/include/c++/9/bits/functional_hash.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/GL/glu.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/box.hpp:
+
+/usr/include/c++/9/ext/aligned_buffer.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity.hpp:
+
+/usr/include/glm/ext/matrix_float4x3.hpp:
+
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/c++/9/cstring:
+
+/usr/include/glm/mat2x4.hpp:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+/usr/include/c++/9/ext/type_traits.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/way.hpp:
+
+/usr/include/c++/9/bits/std_abs.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/opl_input_format.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/any_compression.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/builder/builder.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/data_view.hpp:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/bzlib.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/version.hpp:
+
+/usr/include/c++/9/ext/concurrence.h:
+
+/usr/include/c++/9/bits/algorithmfwd.h:
+
+/usr/include/glm/mat4x4.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/c++/9/bits/atomic_futex.h:
+
+/usr/include/glm/ext/matrix_float4x2_precision.hpp:
+
+/usr/include/glm/ext/vector_double4.hpp:
+
+/usr/include/c++/9/bits/basic_ios.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h:
+
+/usr/include/c++/9/ios:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/c++/9/bits/char_traits.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/pbf_reader.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm.hpp:
+
+/usr/include/glm/detail/type_vec1.hpp:
+
+/usr/include/c++/9/bits/cpp_type_traits.h:
+
+/usr/include/c++/9/iterator:
 
 /usr/include/c++/9/stdexcept:
 
+/usr/include/c++/9/cstdio:
+
+/usr/include/glm/detail/setup.hpp:
+
+/usr/include/glm/detail/type_mat3x4.inl:
+
+/usr/include/c++/9/bits/deque.tcc:
+
+/usr/include/glm/detail/_fixes.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/c++locale.h:
+
+/usr/include/glm/detail/_vectorize.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref.hpp:
+
+/usr/include/glm/detail/compute_common.hpp:
+
+/usr/include/c++/9/bits/locale_facets.tcc:
+
+/usr/include/strings.h:
+
+/usr/include/glm/detail/func_common.inl:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/read_thread.hpp:
+
+/usr/include/sched.h:
+
+/usr/include/wctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/glm/detail/func_packing.inl:
+
+/usr/include/glm/detail/func_vector_relational.inl:
+
+/usr/include/glm/detail/type_half.hpp:
+
+/usr/include/glm/detail/type_half.inl:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
+
+/usr/include/glm/detail/type_mat2x2.inl:
+
+/usr/include/glm/detail/type_mat2x4.hpp:
+
+/usr/include/linux/types.h:
+
+/usr/include/c++/9/bits/stl_algo.h:
+
+/usr/include/c++/9/bits/shared_ptr_base.h:
+
+/usr/include/glm/detail/type_mat2x4.inl:
+
+/usr/include/glm/detail/type_mat3x2.hpp:
+
+/usr/include/glm/ext/matrix_double4x2_precision.hpp:
+
+/usr/include/glm/detail/type_mat3x3.hpp:
+
+/usr/include/glm/detail/type_mat3x3.inl:
+
+/usr/include/glm/detail/type_mat3x4.hpp:
+
+/usr/include/glm/detail/func_exponential.inl:
+
+/usr/include/glm/detail/type_mat4x2.hpp:
+
+/usr/include/glm/detail/type_mat4x2.inl:
+
+/usr/include/c++/9/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/gthr.h:
+
+/usr/include/glm/detail/type_mat4x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/glm/detail/type_mat4x3.inl:
+
+/usr/include/c++/9/limits:
+
+/usr/include/glm/detail/type_mat4x4.inl:
+
+/usr/include/glm/detail/type_vec1.inl:
+
+/usr/include/c++/9/bits/stl_uninitialized.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/compatibility.hpp:
+
+/usr/include/glm/detail/type_vec2.inl:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/glm/detail/type_vec3.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/glm/detail/type_vec3.inl:
+
+/usr/include/locale.h:
+
+/usr/include/c++/9/bits/basic_string.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/glm/ext/matrix_double2x2.hpp:
+
+/usr/include/glm/ext/matrix_double2x3_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/9/bits/parse_numbers.h:
+
+/usr/include/glm/ext/matrix_double2x4.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/include/glm/ext/matrix_double2x4_precision.hpp:
+
+/usr/include/glm/vec4.hpp:
+
+/usr/include/glm/ext/matrix_double3x2.hpp:
+
+/usr/include/glm/ext/matrix_double4x3.hpp:
+
+/usr/include/glm/ext/matrix_double3x2_precision.hpp:
+
+/usr/include/glm/ext/matrix_double3x3_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/glm/ext/matrix_double3x4_precision.hpp:
+
+/usr/include/c++/9/map:
+
+/usr/include/glm/ext/matrix_double4x2.hpp:
+
+/usr/include/alloca.h:
+
+/usr/include/glm/ext/matrix_double4x4.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+/usr/include/glm/ext/matrix_double4x4_precision.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
-/usr/include/c++/9/streambuf:
+/usr/include/glm/ext/matrix_float2x2.hpp:
 
-/usr/include/asm-generic/posix_types.h:
+/usr/include/glm/ext/matrix_float2x3.hpp:
 
-/usr/include/c++/9/system_error:
+/usr/include/c++/9/cstdint:
 
-/usr/include/x86_64-linux-gnu/c++/9/bits/error_constants.h:
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/io/detail/pbf.hpp:
 
-/usr/include/c++/9/thread:
+/usr/include/glm/ext/matrix_float2x3_precision.hpp:
 
-/usr/include/c++/9/bits/stl_function.h:
+/usr/include/x86_64-linux-gnu/bits/errno.h:
 
-/usr/include/c++/9/tuple:
+/usr/include/glm/detail/compute_vector_relational.hpp:
 
-/usr/include/c++/9/clocale:
+/usr/include/glm/ext/matrix_float2x4_precision.hpp:
 
-/usr/include/c++/9/bits/refwrap.h:
+/usr/include/glm/ext/vector_bool4.hpp:
 
-/usr/include/c++/9/unordered_map:
+/usr/include/glm/ext/matrix_float3x2.hpp:
 
-/usr/include/stdint.h:
+/usr/include/glm/ext/matrix_float3x2_precision.hpp:
 
-/usr/include/endian.h:
+/usr/include/glm/ext/matrix_float3x3_precision.hpp:
+
+/usr/include/glm/ext/vector_bool2.hpp:
+
+/usr/include/glm/ext/vector_bool2_precision.hpp:
+
+/usr/include/glm/ext/vector_bool3.hpp:
+
+/usr/include/glm/ext/matrix_double3x4.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/glm/ext/vector_bool3_precision.hpp:
+
+/usr/include/glm/ext/vector_double2.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/glm/ext/vector_double2_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:
+
+/usr/include/glm/ext/vector_double3.hpp:
+
+/usr/include/glm/ext/vector_double3_precision.hpp:
+
+/usr/include/glm/ext/vector_double4_precision.hpp:
+
+/usr/include/glm/ext/vector_float2.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+/usr/include/glm/ext/vector_float2_precision.hpp:
+
+/usr/include/c++/9/bits/exception_ptr.h:
+
+/usr/include/glm/ext/vector_float3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/c++/9/bits/stl_queue.h:
+
+/usr/include/glm/ext/vector_float4.hpp:
+
+/usr/include/glm/ext/vector_float4_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/glm/ext/vector_int2.hpp:
+
+/usr/include/glm/ext/vector_int2_precision.hpp:
+
+/usr/include/glm/ext/vector_int3.hpp:
+
+/usr/include/glm/ext/vector_int3_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/glm/ext/vector_int4.hpp:
+
+/usr/include/glm/ext/vector_uint2.hpp:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/misc.hpp:
+
+/usr/include/glm/ext/vector_uint3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/c++/9/new:
+
+/usr/include/glm/ext/vector_uint3_precision.hpp:
+
+/usr/include/glm/fwd.hpp:
+
+/usr/include/glm/ext/matrix_float4x4.hpp:
+
+/usr/include/c++/9/bits/predefined_ops.h:
+
+/usr/include/glm/detail/func_trigonometric.inl:
+
+/usr/include/glm/integer.hpp:
+
+/usr/include/glm/mat2x3.hpp:
+
+/usr/include/glm/exponential.hpp:
+
+/usr/include/glm/mat3x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/glm/packing.hpp:
+
+/usr/include/glm/detail/type_vec4.hpp:
+
+/usr/include/glm/simd/platform.h:
+
+/usr/include/glm/trigonometric.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/glm/vec2.hpp:
+
+/usr/include/c++/9/array:
+
+/usr/include/glm/vec3.hpp:
+
+/usr/include/c++/9/bits/locale_facets.h:
+
+/usr/include/glm/vector_relational.hpp:
+
+/usr/include/linux/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
-/usr/include/linux/falloc.h:
+/usr/include/linux/limits.h:
+
+/usr/include/c++/9/functional:
+
+/usr/include/glm/detail/type_mat2x3.hpp:
+
+/usr/include/linux/posix_types.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/double.hpp:
+
+/usr/include/glm/ext/matrix_float3x4_precision.hpp:
+
+/usr/include/linux/stat.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/buffer.hpp:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/glm/glm.hpp:
+
+/usr/include/glm/matrix.hpp:
+
+/usr/include/pthread.h:
+
+/usr/include/stdio.h:
+
+/usr/include/glm/ext/vector_int4_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/c++/9/bits/stl_function.h:
+
+/usr/include/c++/9/deque:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/glm/mat4x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
+
+/usr/include/glm/ext/matrix_double3x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/signal_ext.h:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/statx-generic.h:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/9/atomic:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/include/linux/prctl.h:
 
-/usr/include/linux/stddef.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+
+/usr/include/math.h:
+
+/usr/include/glm/ext/matrix_float4x4_precision.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/glm/detail/type_mat2x2.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/include/linux/falloc.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
+
+/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/protozero/include/protozero/varint.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/signal.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/c++/9/bits/stl_tree.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/zlib.h:
+
+/usr/include/c++/9/bits/stringfwd.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/atomic_word.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/cpu_defines.h:
+
+/usr/include/glm/detail/type_mat2x3.inl:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/ctype_base.h:
+
+/usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/sys/stat.h:

@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/test.dir/PathfindingCityMap.cpp.o -o test  -lz -lpthread -lexpat -lbz2
+/usr/bin/c++ -rdynamic CMakeFiles/test.dir/PathfindingCityMap.cpp.o -o test  -lz -lpthread -lexpat -lbz2 -lGL -lGLU -lglut /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGLEW.so

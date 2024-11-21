@@ -98,6 +98,11 @@ test: CMakeFiles/test.dir/build.make
 test: /usr/lib/x86_64-linux-gnu/libz.so
 test: /usr/lib/x86_64-linux-gnu/libexpat.so
 test: /usr/lib/x86_64-linux-gnu/libbz2.so
+test: /usr/lib/x86_64-linux-gnu/libGL.so
+test: /usr/lib/x86_64-linux-gnu/libGLU.so
+test: /usr/lib/x86_64-linux-gnu/libglut.so
+test: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+test: /usr/lib/x86_64-linux-gnu/libGLEW.so
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)

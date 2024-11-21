@@ -11,18 +11,17 @@ if(NOT OSMIUM_FOUND)
 endif()
 
 find_package(Protozero REQUIRED)
-include_directories(${PROTOZERO_INCLUDE_DIR})
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glfw3 REQUIRED)
+
+include_directories(${PROTOZERO_INCLUDE_DIR} ${OPENGL_INCLUDE_DIRS} ${GLUT_UNCLUDE_DIRS})
 
 if(NOT PROTOZERO_FOUND)
     message(WARNING "Protozero not found!\n")
 endif()
 
 add_executable(test PathfindingCityMap.cpp)
-target_link_libraries(test ${OSMIUM_IO_LIBRARIES})
-# find_package(OpenGL REQUIRED)
-# find_package(GLUT REQUIRED)
 
-# add_executable(gl testOpenGL.cpp)
-
-# include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_UNCLUDE_DIRS})
-# target_link_libraries(gl ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+target_link_libraries(test ${OSMIUM_IO_LIBRARIES} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${GLEW_INCLUDE_DIRS} glfw GLEW::GLEW)

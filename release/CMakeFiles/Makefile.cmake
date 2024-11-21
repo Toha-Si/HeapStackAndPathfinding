@@ -26,6 +26,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/Compiler/GNU.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindBZip2.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindEXPAT.cmake"
+  "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindGLEW.cmake"
+  "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindGLUT.cmake"
+  "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindOpenGL.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindPackageMessage.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/FindPkgConfig.cmake"
@@ -55,6 +58,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.31.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.0/CMakeSystem.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake"
   )
 
 # The corresponding makefile is:
