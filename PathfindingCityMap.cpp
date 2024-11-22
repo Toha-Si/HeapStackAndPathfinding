@@ -21,6 +21,18 @@ struct Edge
     double distance;
 };
 
+const osmium::Box BOX_BOLSHOY_SOCHI = osmium::Box
+{
+    osmium::Location{39.5961, 43.3671},
+    osmium::Location{40.2869, 43.6967}
+};
+
+const osmium::Box BOX_SOCHI = osmium::Box
+{
+    osmium::Location{39.6795, 43.5361},
+    osmium::Location{39.8131, 43.6507}
+};
+
 std::unordered_map<int, osmium::Location> nodeLocations;
 std::unordered_map<int, std::vector<Edge>> graph;
 
@@ -31,25 +43,16 @@ struct NodeHandler : public osmium::handler::Handler
         {
             if (node.location()) 
             {
-                nodeLocations[node.id()] = node.location();
+                if(BOX_BOLSHOY_SOCHI.contains(node.location()))
+                {
+                    nodeLocations[node.id()] = node.location();
+                }
             }
         }
 };
 
 struct RoadHandler : public osmium::handler::Handler
 {
-    const osmium::Box BOX_BOLSHOY_SOCHI = osmium::Box
-    {
-        osmium::Location{39.5961, 43.3671},
-        osmium::Location{40.2869, 43.6967}
-    };
-
-    const osmium::Box BOX_SOCHI = osmium::Box
-    {
-        osmium::Location{39.6795, 43.5361},
-        osmium::Location{39.8131, 43.6507}
-    };
-
     void way(const osmium::Way& way)
     {
         const char* highway = way.tags()["highway"];
@@ -59,7 +62,7 @@ struct RoadHandler : public osmium::handler::Handler
             return;
         }
 
-        bool intersectsBox = false;
+        bool intersectsBox = true;
 
         for (const auto& nodeRef : way.nodes())
         {
@@ -69,9 +72,10 @@ struct RoadHandler : public osmium::handler::Handler
             {
                 osmium::Location loc = it->second;
 
-                if (BOX_BOLSHOY_SOCHI.contains(loc)) 
+                if (!BOX_BOLSHOY_SOCHI.contains(loc)) 
                 {
-                    intersectsBox = true;
+                    intersectsBox = false;
+                    break;
                 }
             }
         }
@@ -109,6 +113,13 @@ struct RoadHandler : public osmium::handler::Handler
             {
                 const auto& distance = osmium::geom::haversine::distance(osmium::geom::Coordinates(nodeLocations[fromID]), 
                                                                          osmium::geom::Coordinates(nodeLocations[ toID ]));
+
+
+                if(distance > 5000)
+                {
+                    continue;
+                }
+
                 if (!isOneway)
                 {
                     graph[fromID].push_back({toID, distance});
@@ -322,11 +333,11 @@ int main(int argc, char** argv)
         osmium::io::Reader nodeReader{inputFile, osmium::osm_entity_bits::node};
         NodeHandler nodeHandler;
 
-        std::cout << "\nStarted writing nodes\n";
+        std::cout << "\nStarted reading nodes\n";
 
         osmium::apply(nodeReader, nodeHandler);
 
-        std::cout << "\nCompleted writing nodes\n";
+        std::cout << "\nCompleted reading nodes\n";
 
         RoadHandler roadHandler;
         osmium::io::Reader roadReader{inputFile, osmium::osm_entity_bits::way};
@@ -341,7 +352,7 @@ int main(int argc, char** argv)
 
         std::cout << "\nMemory used: " << memory.peak() << " MBytes\n";
 
-        std::vector<float> vertices = prepareGraphVertices(roadHandler.BOX_SOCHI);
+        std::vector<float> vertices = prepareGraphVertices(BOX_SOCHI);
 
         GLFWwindow* window;
         initOpenGL(window);
