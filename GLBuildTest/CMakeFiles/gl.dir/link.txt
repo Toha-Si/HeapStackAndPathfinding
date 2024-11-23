@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/gl.dir/testOpenGL.cpp.o -o gl  -lGL -lGLU -lglut

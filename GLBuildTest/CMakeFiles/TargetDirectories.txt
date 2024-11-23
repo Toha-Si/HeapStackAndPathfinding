@@ -1,3 +1,0 @@
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/GLbuild/CMakeFiles/gl.dir
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/GLbuild/CMakeFiles/edit_cache.dir
-/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/GLbuild/CMakeFiles/rebuild_cache.dir

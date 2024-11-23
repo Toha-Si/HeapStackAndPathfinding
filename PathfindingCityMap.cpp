@@ -6,6 +6,10 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 #include <osmium/io/any_input.hpp>
 #include <osmium/util/file.hpp>
 #include <osmium/osm/box.hpp>
@@ -235,7 +239,6 @@ std::vector<float> prepareGraphVertices(const osmium::Box &bounds)
 
     for (const auto& [nodeID, edges] : graph) 
     {
-
         glm::vec2 nodeFrom = locToScreen(nodeLocations[nodeID], bounds);
 
         for (const auto& edge : edges) 
@@ -252,37 +255,50 @@ std::vector<float> prepareGraphVertices(const osmium::Box &bounds)
     return vertices;
 }
 
-void initOpenGL(GLFWwindow*& window) {
-    if (!glfwInit()) {
+void initOpenGL(GLFWwindow*& window)
+{
+    if (!glfwInit())
+    {
         std::cerr << "Failed to initialize GLFW\n";
         exit(EXIT_FAILURE);
     }
 
     window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pathfinding Sochi Example", nullptr, nullptr);
-    if (!window) {
+
+    if (!window)
+    {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
 
     glfwMakeContextCurrent(window);
+
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
     glfwSetScrollCallback(window, scrollCallback);
     glfwSetMouseButtonCallback(window, mouseButtonCallback);
     glfwSetCursorPosCallback(window, cursorPositionCallback);
 
-    if (glewInit() != GLEW_OK) {
+    if (glewInit() != GLEW_OK)
+    {
         std::cerr << "Failed to initialize GLEW\n";
         exit(EXIT_FAILURE);
     }
 
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 130");
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0, -1, 1);
 }
 
-void renderGraph(GLFWwindow* window, const std::vector<float>& vertices) {
+void renderGraph(GLFWwindow* window, const std::vector<float>& vertices)
+{
     GLuint VBO;
     glGenBuffers(1, &VBO);
 
@@ -291,7 +307,8 @@ void renderGraph(GLFWwindow* window, const std::vector<float>& vertices) {
 
     float lastFrameTime = glfwGetTime();
 
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window))
+    {
         float currentFrameTime = glfwGetTime();
         float deltaTime = currentFrameTime - lastFrameTime;
         lastFrameTime = currentFrameTime;
@@ -311,8 +328,30 @@ void renderGraph(GLFWwindow* window, const std::vector<float>& vertices) {
         glDrawArrays(GL_LINES, 0, vertices.size() / 2);
         glDisableClientState(GL_VERTEX_ARRAY);
 
+                ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        ImGui::Begin("UI Controls");
+        ImGui::Text("Graph Visualization");
+        ImGui::SliderFloat("Zoom", &zoom, 0.01f, 100.0f);
+        ImGui::SliderFloat("Offset X", &offsetX, -100.0f, 100.0f);
+        ImGui::SliderFloat("Offset Y", &offsetY, -100.0f, 100.0f);
+
+        if (ImGui::Button("Reset View")) {
+            zoom = 1.0f;
+            offsetX = 0.0f;
+            offsetY = 0.0f;
+        }
+        ImGui::End();
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+
     }
 
     glDeleteBuffers(1, &VBO);
@@ -355,10 +394,16 @@ int main(int argc, char** argv)
         std::vector<float> vertices = prepareGraphVertices(BOX_SOCHI);
 
         GLFWwindow* window;
+
         initOpenGL(window);
 
-
         renderGraph(window, vertices);
+
+
+
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
 
         glfwDestroyWindow(window);
         glfwTerminate();

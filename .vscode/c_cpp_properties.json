@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/libosmium/include"
+                "${workspaceFolder}/libosmium/include",
+                "${workspaceFolder}/imgui"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
