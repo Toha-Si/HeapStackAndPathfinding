@@ -19,11 +19,11 @@
 #include <osmium/geom/haversine.hpp>
 #include <osmium/util/progress_bar.hpp>
 
-struct Edge
-{
-    int nodeToID;
-    double distance;
-};
+// struct Edge
+// {
+//     int nodeToID;
+//     double distance;
+// };
 
 const osmium::Box BOX_BOLSHOY_SOCHI = osmium::Box
 {
@@ -37,223 +37,220 @@ const osmium::Box BOX_SOCHI = osmium::Box
     osmium::Location{39.8131, 43.6507}
 };
 
-std::unordered_map<int, osmium::Location> nodeLocations;
-std::unordered_map<int, std::vector<Edge>> graph;
+//std::unordered_map<int, osmium::Location> nodeLocations;
+//std::unordered_map<int, std::vector<Edge>> graph;
 
-struct NodeHandler : public osmium::handler::Handler
-{
-    public:
-        void node(const osmium::Node& node)
-        {
-            if (node.location()) 
-            {
-                if(BOX_BOLSHOY_SOCHI.contains(node.location()))
-                {
-                    nodeLocations[node.id()] = node.location();
-                }
-            }
-        }
-};
+// struct NodeHandler : public osmium::handler::Handler
+// {
+//     public:
+//         void node(const osmium::Node& node)
+//         {
+//             if (node.location()) 
+//             {
+//                 if(BOX_BOLSHOY_SOCHI.contains(node.location()))
+//                 {
+//                     nodeLocations[node.id()] = node.location();
+//                 }
+//             }
+//         }
+// };
+// struct RoadHandler : public osmium::handler::Handler
+// {
+//     void way(const osmium::Way& way)
+//     {
+//         const char* highway = way.tags()["highway"];
+//
+//         if (!highway)
+//         {
+//             return;
+//         }
+//
+//         bool intersectsBox = true;
+//
+//         for (const auto& nodeRef : way.nodes())
+//         {
+//             auto it = nodeLocations.find(nodeRef.ref());
+//
+//             if (it != nodeLocations.end()) 
+//             {
+//                 osmium::Location loc = it->second;
+//
+//                 if (!BOX_BOLSHOY_SOCHI.contains(loc)) 
+//                 {
+//                     intersectsBox = false;
+//                     break;
+//                 }
+//             }
+//         }
+//
+//         if (!intersectsBox)
+//         {
+//             return;
+//         }
+//
+//         const char* oneway = way.tags()["oneway"];
+//         bool isOneway = false;
+//         bool isReversed = false;
+//
+//         if (oneway) 
+//         {
+//             if (std::strcmp(oneway, "yes") == 0 || std::strcmp(oneway, "1") == 0) 
+//             {
+//                 isOneway = true;
+//             } 
+//             else if (std::strcmp(oneway, "-1") == 0) 
+//             {
+//                 isOneway = true;
+//                 isReversed = true;
+//             }
+//         }
+//
+//         const auto& nodes = way.nodes();
+//
+//         for (size_t i = 0; i < nodes.size() - 1; ++i)
+//         {
+//             int fromID = nodes[i].ref();
+//             int toID = nodes[i+1].ref();
+//
+//             if (nodeLocations.count(fromID) && nodeLocations.count(toID))
+//             {
+//                 const auto& distance = osmium::geom::haversine::distance(osmium::geom::Coordinates(nodeLocations[fromID]), 
+//                                                                          osmium::geom::Coordinates(nodeLocations[ toID ]));
+//
+//                 if(distance > 5000)
+//                 {
+//                     continue;
+//                 }
+//
+//                 if (!isOneway)
+//                 {
+//                     graph[fromID].push_back({toID, distance});
+//                     graph[toID].push_back({fromID, distance});
+//                 }
+//                 else
+//                 {
+//                     if(isReversed)
+//                     {
+//                         graph[toID].push_back({fromID, distance});
+//                     }
+//                     else
+//                     {
+//                         graph[fromID].push_back({toID, distance});
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// };
 
-struct RoadHandler : public osmium::handler::Handler
-{
-    void way(const osmium::Way& way)
-    {
-        const char* highway = way.tags()["highway"];
+// int WINDOW_WIDTH = 800;
+// int WINDOW_HEIGHT = 600;
+// float zoom = 1.0f;
+// float offsetX = 0.0f;
+// float offsetY = 0.0f;
+// bool isDragging = false;
+// double lastMouseX = 0.0, lastMouseY = 0.0;
 
-        if (!highway)
-        {
-            return;
-        }
+// void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+// {
+//     if (button == GLFW_MOUSE_BUTTON_LEFT)
+//     {
+//         if (action == GLFW_PRESS) 
+//         {
+//             isDragging = true;
+//             glfwGetCursorPos(window, &lastMouseX, &lastMouseY);
+//         }
+//         else if (action == GLFW_RELEASE)
+//         {
+//             isDragging = false;
+//         }
+//     }
+// }
 
-        bool intersectsBox = true;
+// void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
+// {
+//     if (isDragging)
+//     {
+//         double dx = xpos - lastMouseX;
+//         double dy = ypos - lastMouseY;
+//
+//         offsetX -= dx / zoom;
+//         offsetY += dy / zoom;
+//
+//         lastMouseX = xpos;
+//         lastMouseY = ypos;
+//     }
+// }
 
-        for (const auto& nodeRef : way.nodes())
-        {
-            auto it = nodeLocations.find(nodeRef.ref());
-
-            if (it != nodeLocations.end()) 
-            {
-                osmium::Location loc = it->second;
-
-                if (!BOX_BOLSHOY_SOCHI.contains(loc)) 
-                {
-                    intersectsBox = false;
-                    break;
-                }
-            }
-        }
-
-        if (!intersectsBox)
-        {
-            return;
-        }
-
-        const char* oneway = way.tags()["oneway"];
-        bool isOneway = false;
-        bool isReversed = false;
-
-        if (oneway) 
-        {
-            if (std::strcmp(oneway, "yes") == 0 || std::strcmp(oneway, "1") == 0) 
-            {
-                isOneway = true;
-            } 
-            else if (std::strcmp(oneway, "-1") == 0) 
-            {
-                isOneway = true;
-                isReversed = true;
-            }
-        }
-
-        const auto& nodes = way.nodes();
-
-        for (size_t i = 0; i < nodes.size() - 1; ++i)
-        {
-            int fromID = nodes[i].ref();
-            int toID = nodes[i+1].ref();
-
-            if (nodeLocations.count(fromID) && nodeLocations.count(toID))
-            {
-                const auto& distance = osmium::geom::haversine::distance(osmium::geom::Coordinates(nodeLocations[fromID]), 
-                                                                         osmium::geom::Coordinates(nodeLocations[ toID ]));
-
-
-                if(distance > 5000)
-                {
-                    continue;
-                }
-
-                if (!isOneway)
-                {
-                    graph[fromID].push_back({toID, distance});
-                    graph[toID].push_back({fromID, distance});
-                }
-                else
-                {
-                    if(isReversed)
-                    {
-                        graph[toID].push_back({fromID, distance});
-                    }
-                    else
-                    {
-                        graph[fromID].push_back({toID, distance});
-                    }
-                }
-            }
-        }
-    }
-};
-
-int WINDOW_WIDTH = 800;
-int WINDOW_HEIGHT = 600;
-float zoom = 1.0f;
-float offsetX = 0.0f;
-float offsetY = 0.0f;
-bool isDragging = false;
-double lastMouseX = 0.0, lastMouseY = 0.0;
-
-void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
-{
-    if (button == GLFW_MOUSE_BUTTON_LEFT)
-    {
-        if (action == GLFW_PRESS) 
-        {
-            isDragging = true;
-            glfwGetCursorPos(window, &lastMouseX, &lastMouseY);
-        }
-        else if (action == GLFW_RELEASE)
-        {
-            isDragging = false;
-        }
-    }
-}
-
-void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
-{
-    if (isDragging)
-    {
-        double dx = xpos - lastMouseX;
-        double dy = ypos - lastMouseY;
-
-        offsetX -= dx / zoom;
-        offsetY += dy / zoom;
-
-        lastMouseX = xpos;
-        lastMouseY = ypos;
-    }
-}
-
-void cursorToWorld(GLFWwindow* window, double cursorX, double cursorY, float& worldX, float& worldY) {
-    // Переводим экранные координаты в диапазон [-1, 1]
-    float normalizedX = (2.0f * cursorX) / WINDOW_WIDTH - 1.0f;
-    float normalizedY = 1.0f - (2.0f * cursorY) / WINDOW_HEIGHT; // Y инвертирован в OpenGL
-
-    // Переводим нормализованные координаты в мировое пространство
-    worldX = normalizedX * (WINDOW_WIDTH / 2.0f / zoom) + offsetX;
-    worldY = normalizedY * (WINDOW_HEIGHT / 2.0f / zoom) + offsetY;
-}
+// void cursorToWorld(GLFWwindow* window, double cursorX, double cursorY, float& worldX, float& worldY) {
+//     // Переводим экранные координаты в диапазон [-1, 1]
+//     float normalizedX = (2.0f * cursorX) / WINDOW_WIDTH - 1.0f;
+//     float normalizedY = 1.0f - (2.0f * cursorY) / WINDOW_HEIGHT; // Y инвертирован в OpenGL
+//
+//     // Переводим нормализованные координаты в мировое пространство
+//     worldX = normalizedX * (WINDOW_WIDTH / 2.0f / zoom) + offsetX;
+//     worldY = normalizedY * (WINDOW_HEIGHT / 2.0f / zoom) + offsetY;
+// }
 
 //Зум относительно фиксированной точки
-void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
-{
-    double cursorX, cursorY;
-    glfwGetCursorPos(window, &cursorX, &cursorY);
-
-    // Преобразуем позицию курсора в мировые координаты до изменения зума
-    float worldXBefore, worldYBefore;
-    cursorToWorld(window, cursorX, cursorY, worldXBefore, worldYBefore);
-
-    float oldZoom = zoom;
-    zoom *= (yoffset > 0) ? 1.1f : 0.9f;
-    zoom = std::max(0.01f, std::min(zoom, 100.0f));
-
-    // Преобразуем позицию курсора в мировые координаты после изменения зума
-    float worldXAfter, worldYAfter;
-    cursorToWorld(window, cursorX, cursorY, worldXAfter, worldYAfter);
-
-    // Корректируем смещение, чтобы курсор оставался в том же месте в мировых координатах
-    offsetX += (worldXBefore - worldXAfter);
-    offsetY += (worldYBefore - worldYAfter);
-}
+// void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+// {
+//     double cursorX, cursorY;
+//     glfwGetCursorPos(window, &cursorX, &cursorY);
+//
+//     // Преобразуем позицию курсора в мировые координаты до изменения зума
+//     float worldXBefore, worldYBefore;
+//     cursorToWorld(window, cursorX, cursorY, worldXBefore, worldYBefore);
+//
+//     float oldZoom = zoom;
+//     zoom *= (yoffset > 0) ? 1.1f : 0.9f;
+//     zoom = std::max(0.01f, std::min(zoom, 100.0f));
+//
+//     // Преобразуем позицию курсора в мировые координаты после изменения зума
+//     float worldXAfter, worldYAfter;
+//     cursorToWorld(window, cursorX, cursorY, worldXAfter, worldYAfter);
+//
+//     // Корректируем смещение, чтобы курсор оставался в том же месте в мировых координатах
+//     offsetX += (worldXBefore - worldXAfter);
+//     offsetY += (worldYBefore - worldYAfter);
+// }
 
 //Для поддержки изменения размера окна
-void framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-    WINDOW_WIDTH = width;
-    WINDOW_HEIGHT = height;
-    glViewport(0, 0, width, height);
-}
+// void framebufferSizeCallback(GLFWwindow* window, int width, int height)
+// {
+//     WINDOW_WIDTH = width;
+//     WINDOW_HEIGHT = height;
+//     glViewport(0, 0, width, height);
+// }
 
-glm::vec2 locToScreen(const osmium::Location &location, const osmium::Box &bounds)
-{
-    double u = (bounds.left() -  location.lon()) / (bounds.left() - bounds.right()) * WINDOW_WIDTH;
-    double v = (location.lat() - bounds.bottom()) / (bounds.top() - bounds.bottom()) * WINDOW_HEIGHT;
+// glm::vec2 locToScreen(const osmium::Location &location, const osmium::Box &bounds)
+// {
+//     double u = (bounds.left() -  location.lon()) / (bounds.left() - bounds.right()) * WINDOW_WIDTH;
+//     double v = (location.lat() - bounds.bottom()) / (bounds.top() - bounds.bottom()) * WINDOW_HEIGHT;
+//     return glm::vec2(u, v);
+// }
 
-    return glm::vec2(u, v);
-}
-
-std::vector<float> prepareGraphVertices(const osmium::Box &bounds) 
-{
-    std::vector<float> vertices;
-
-    for (const auto& [nodeID, edges] : graph) 
-    {
-        glm::vec2 nodeFrom = locToScreen(nodeLocations[nodeID], bounds);
-
-        for (const auto& edge : edges) 
-        {
-            glm::vec2 nodeTo = locToScreen(nodeLocations[edge.nodeToID], bounds);
-
-            vertices.push_back(nodeFrom.x);
-            vertices.push_back(nodeFrom.y);
-            vertices.push_back(nodeTo.x);
-            vertices.push_back(nodeTo.y);
-        }
-    }
-
-    return vertices;
-}
+// std::vector<float> prepareGraphVertices(const osmium::Box &bounds) 
+// {
+//     std::vector<float> vertices;
+//
+//     for (const auto& [nodeID, edges] : graph) 
+//     {
+//         glm::vec2 nodeFrom = locToScreen(nodeLocations[nodeID], bounds);
+//
+//         for (const auto& edge : edges) 
+//         {
+//             glm::vec2 nodeTo = locToScreen(nodeLocations[edge.nodeToID], bounds);
+//
+//             vertices.push_back(nodeFrom.x);
+//             vertices.push_back(nodeFrom.y);
+//             vertices.push_back(nodeTo.x);
+//             vertices.push_back(nodeTo.y);
+//         }
+//     }
+//
+//     return vertices;
+// }
 
 void initOpenGL(GLFWwindow*& window)
 {
@@ -328,7 +325,7 @@ void renderGraph(GLFWwindow* window, const std::vector<float>& vertices)
         glDrawArrays(GL_LINES, 0, vertices.size() / 2);
         glDisableClientState(GL_VERTEX_ARRAY);
 
-                ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
@@ -350,8 +347,6 @@ void renderGraph(GLFWwindow* window, const std::vector<float>& vertices)
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-
-
     }
 
     glDeleteBuffers(1, &VBO);
@@ -398,8 +393,6 @@ int main(int argc, char** argv)
         initOpenGL(window);
 
         renderGraph(window, vertices);
-
-
 
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
