@@ -12,9 +12,15 @@ enum class FMHStatus
 class OSMDataReader
 {
     public:
+        const char* fileName;
+        const osmium::Box* box;
+
         Graph graph;
         FMHStatus status = FMHStatus::Idle;
         double distanceCutoff = 5000;
 
-        Graph ReadFile(char* fileName);
+        Graph ReadFile();
+
+        bool FileIsSet();
+        bool BoundIsSet();
 };

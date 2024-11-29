@@ -131,8 +131,15 @@ class RoadHandler : public osmium::handler::Handler
             }
         }
 };
-
-Graph OSMDataReader::ReadFile(char* fileName)
+bool OSMDataReader::FileIsSet()
+{
+    return (fileName != NULL) && (fileName[0] == '\0');
+}
+bool OSMDataReader::BoundIsSet()
+{
+    return box->valid();
+}
+Graph OSMDataReader::ReadFile()
 {
     try
     {

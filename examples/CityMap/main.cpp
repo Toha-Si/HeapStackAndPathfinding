@@ -28,7 +28,7 @@ void initOpenGL(Application& app, GLFWwindow*& window)
 
     glfwMakeContextCurrent(window);
 
-    app.BindCallbacks();
+    app.BindCallbacks(window);
 
     if (glewInit() != GLEW_OK)
     {
@@ -43,6 +43,8 @@ void initOpenGL(Application& app, GLFWwindow*& window)
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 130");
 
+    app.Start();
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, app.renderer.windowWidth, app.renderer.windowHeight, 0, -1, 1);
@@ -52,8 +54,9 @@ int main(int argc, char** argv)
 {
     GLFWwindow* window;
     Application app;
-    initOpenGL(app, window);
 
+    initOpenGL(app, window);
+    
     while (!app.shouldClose)
     {
         app.Update();

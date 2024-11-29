@@ -15,12 +15,8 @@ class Application
 
         bool shouldClose = false;
 
-        Application()
-        {
-            current = new SelectionState();
-            current->Enter(*this);
-        }
-        void BindCallbacks();
+        void BindCallbacks(GLFWwindow*& window);
+        void Start();
         void Update();
 
     private:
