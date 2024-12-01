@@ -1,27 +1,35 @@
 #pragma once
 
-#include <fileMapHandler.hpp>
 #include <renderer.hpp>
-#include <widgets.hpp>
+#include <fileMapHandler.hpp>
 #include <controller.hpp>
+#include <widgets.hpp>
+#include <future>
+
+class IAppState;
+class UI;
+class SelectionUI;
+enum class MapNavigationState;
 
 class Application
 {
     public:
-        GLFWwindow* window;
+        GLFWwindow* window = nullptr;
         OSMDataReader mapReader;
-        Renderer renderer;
-        Input input;
+        Renderer* renderer = nullptr;
+        Input* input = nullptr;
+        UI* ui = nullptr;
 
-        bool shouldClose = false;
+        Application();
+        bool shouldClose, shouldLoad = false;
 
-        void BindCallbacks(GLFWwindow*& window);
+        void BindCallbacks();
         void Start();
         void Update();
+        IAppState* const GetCurrentState();
 
     private:
-        IAppState* current;
-
+        IAppState* current = nullptr;
 };
 
 class IAppState
@@ -52,9 +60,18 @@ class LoadingState : public IAppState
 class MapState : public IAppState
 {
     public:
+        MapNavigationState state;
+
         void Enter(Application& app) override;
         IAppState* Update(Application& app) override; 
         void Exit(Application& app) override;
+};
+
+enum class MapNavigationState
+{
+    Roaming,
+    WaypointSelection,
+    Pause
 };
 
 class TerminationState : public IAppState

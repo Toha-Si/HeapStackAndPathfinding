@@ -57,10 +57,10 @@ RM = /home/anton/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E rm 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anton/Documents/polytech_proga/HeapStackAndPathfinding
+CMAKE_SOURCE_DIR = /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release
+CMAKE_BINARY_DIR = /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release/CMakeFiles /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/Build/CMakeFiles /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/Build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/release/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,185 +117,353 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named Pathfinding
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
-.PHONY : test
+Pathfinding: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Pathfinding
+.PHONY : Pathfinding
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+Pathfinding/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/build
+.PHONY : Pathfinding/fast
 
-PathfindingCityMap.o: PathfindingCityMap.cpp.o
-.PHONY : PathfindingCityMap.o
-
-# target to build an object file
-PathfindingCityMap.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.o
-.PHONY : PathfindingCityMap.cpp.o
-
-PathfindingCityMap.i: PathfindingCityMap.cpp.i
-.PHONY : PathfindingCityMap.i
-
-# target to preprocess a source file
-PathfindingCityMap.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.i
-.PHONY : PathfindingCityMap.cpp.i
-
-PathfindingCityMap.s: PathfindingCityMap.cpp.s
-.PHONY : PathfindingCityMap.s
-
-# target to generate assembly for a file
-PathfindingCityMap.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/PathfindingCityMap.cpp.s
-.PHONY : PathfindingCityMap.cpp.s
-
-imgui/backends/imgui_impl_glfw.o: imgui/backends/imgui_impl_glfw.cpp.o
-.PHONY : imgui/backends/imgui_impl_glfw.o
+algos.o: algos.cpp.o
+.PHONY : algos.o
 
 # target to build an object file
-imgui/backends/imgui_impl_glfw.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_glfw.cpp.o
-.PHONY : imgui/backends/imgui_impl_glfw.cpp.o
+algos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/algos.cpp.o
+.PHONY : algos.cpp.o
 
-imgui/backends/imgui_impl_glfw.i: imgui/backends/imgui_impl_glfw.cpp.i
-.PHONY : imgui/backends/imgui_impl_glfw.i
+algos.i: algos.cpp.i
+.PHONY : algos.i
 
 # target to preprocess a source file
-imgui/backends/imgui_impl_glfw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_glfw.cpp.i
-.PHONY : imgui/backends/imgui_impl_glfw.cpp.i
+algos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/algos.cpp.i
+.PHONY : algos.cpp.i
 
-imgui/backends/imgui_impl_glfw.s: imgui/backends/imgui_impl_glfw.cpp.s
-.PHONY : imgui/backends/imgui_impl_glfw.s
+algos.s: algos.cpp.s
+.PHONY : algos.s
 
 # target to generate assembly for a file
-imgui/backends/imgui_impl_glfw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_glfw.cpp.s
-.PHONY : imgui/backends/imgui_impl_glfw.cpp.s
+algos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/algos.cpp.s
+.PHONY : algos.cpp.s
 
-imgui/backends/imgui_impl_opengl3.o: imgui/backends/imgui_impl_opengl3.cpp.o
-.PHONY : imgui/backends/imgui_impl_opengl3.o
+appStateMachine.o: appStateMachine.cpp.o
+.PHONY : appStateMachine.o
 
 # target to build an object file
-imgui/backends/imgui_impl_opengl3.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_opengl3.cpp.o
-.PHONY : imgui/backends/imgui_impl_opengl3.cpp.o
+appStateMachine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/appStateMachine.cpp.o
+.PHONY : appStateMachine.cpp.o
 
-imgui/backends/imgui_impl_opengl3.i: imgui/backends/imgui_impl_opengl3.cpp.i
-.PHONY : imgui/backends/imgui_impl_opengl3.i
+appStateMachine.i: appStateMachine.cpp.i
+.PHONY : appStateMachine.i
 
 # target to preprocess a source file
-imgui/backends/imgui_impl_opengl3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_opengl3.cpp.i
-.PHONY : imgui/backends/imgui_impl_opengl3.cpp.i
+appStateMachine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/appStateMachine.cpp.i
+.PHONY : appStateMachine.cpp.i
 
-imgui/backends/imgui_impl_opengl3.s: imgui/backends/imgui_impl_opengl3.cpp.s
-.PHONY : imgui/backends/imgui_impl_opengl3.s
+appStateMachine.s: appStateMachine.cpp.s
+.PHONY : appStateMachine.s
 
 # target to generate assembly for a file
-imgui/backends/imgui_impl_opengl3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/backends/imgui_impl_opengl3.cpp.s
-.PHONY : imgui/backends/imgui_impl_opengl3.cpp.s
+appStateMachine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/appStateMachine.cpp.s
+.PHONY : appStateMachine.cpp.s
 
-imgui/imgui.o: imgui/imgui.cpp.o
-.PHONY : imgui/imgui.o
+controller.o: controller.cpp.o
+.PHONY : controller.o
 
 # target to build an object file
-imgui/imgui.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui.cpp.o
-.PHONY : imgui/imgui.cpp.o
+controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/controller.cpp.o
+.PHONY : controller.cpp.o
 
-imgui/imgui.i: imgui/imgui.cpp.i
-.PHONY : imgui/imgui.i
+controller.i: controller.cpp.i
+.PHONY : controller.i
 
 # target to preprocess a source file
-imgui/imgui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui.cpp.i
-.PHONY : imgui/imgui.cpp.i
+controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/controller.cpp.i
+.PHONY : controller.cpp.i
 
-imgui/imgui.s: imgui/imgui.cpp.s
-.PHONY : imgui/imgui.s
+controller.s: controller.cpp.s
+.PHONY : controller.s
 
 # target to generate assembly for a file
-imgui/imgui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui.cpp.s
-.PHONY : imgui/imgui.cpp.s
+controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/controller.cpp.s
+.PHONY : controller.cpp.s
 
-imgui/imgui_draw.o: imgui/imgui_draw.cpp.o
-.PHONY : imgui/imgui_draw.o
+fileMapHandler.o: fileMapHandler.cpp.o
+.PHONY : fileMapHandler.o
 
 # target to build an object file
-imgui/imgui_draw.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_draw.cpp.o
-.PHONY : imgui/imgui_draw.cpp.o
+fileMapHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/fileMapHandler.cpp.o
+.PHONY : fileMapHandler.cpp.o
 
-imgui/imgui_draw.i: imgui/imgui_draw.cpp.i
-.PHONY : imgui/imgui_draw.i
+fileMapHandler.i: fileMapHandler.cpp.i
+.PHONY : fileMapHandler.i
 
 # target to preprocess a source file
-imgui/imgui_draw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_draw.cpp.i
-.PHONY : imgui/imgui_draw.cpp.i
+fileMapHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/fileMapHandler.cpp.i
+.PHONY : fileMapHandler.cpp.i
 
-imgui/imgui_draw.s: imgui/imgui_draw.cpp.s
-.PHONY : imgui/imgui_draw.s
+fileMapHandler.s: fileMapHandler.cpp.s
+.PHONY : fileMapHandler.s
 
 # target to generate assembly for a file
-imgui/imgui_draw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_draw.cpp.s
-.PHONY : imgui/imgui_draw.cpp.s
+fileMapHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/fileMapHandler.cpp.s
+.PHONY : fileMapHandler.cpp.s
 
-imgui/imgui_tables.o: imgui/imgui_tables.cpp.o
-.PHONY : imgui/imgui_tables.o
+graph.o: graph.cpp.o
+.PHONY : graph.o
 
 # target to build an object file
-imgui/imgui_tables.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_tables.cpp.o
-.PHONY : imgui/imgui_tables.cpp.o
+graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/graph.cpp.o
+.PHONY : graph.cpp.o
 
-imgui/imgui_tables.i: imgui/imgui_tables.cpp.i
-.PHONY : imgui/imgui_tables.i
+graph.i: graph.cpp.i
+.PHONY : graph.i
 
 # target to preprocess a source file
-imgui/imgui_tables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_tables.cpp.i
-.PHONY : imgui/imgui_tables.cpp.i
+graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/graph.cpp.i
+.PHONY : graph.cpp.i
 
-imgui/imgui_tables.s: imgui/imgui_tables.cpp.s
-.PHONY : imgui/imgui_tables.s
+graph.s: graph.cpp.s
+.PHONY : graph.s
 
 # target to generate assembly for a file
-imgui/imgui_tables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_tables.cpp.s
-.PHONY : imgui/imgui_tables.cpp.s
+graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/graph.cpp.s
+.PHONY : graph.cpp.s
 
-imgui/imgui_widgets.o: imgui/imgui_widgets.cpp.o
-.PHONY : imgui/imgui_widgets.o
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.o
 
 # target to build an object file
-imgui/imgui_widgets.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_widgets.cpp.o
-.PHONY : imgui/imgui_widgets.cpp.o
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.o
 
-imgui/imgui_widgets.i: imgui/imgui_widgets.cpp.i
-.PHONY : imgui/imgui_widgets.i
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.i
 
 # target to preprocess a source file
-imgui/imgui_widgets.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_widgets.cpp.i
-.PHONY : imgui/imgui_widgets.cpp.i
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.i
 
-imgui/imgui_widgets.s: imgui/imgui_widgets.cpp.s
-.PHONY : imgui/imgui_widgets.s
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.s
 
 # target to generate assembly for a file
-imgui/imgui_widgets.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/imgui/imgui_widgets.cpp.s
-.PHONY : imgui/imgui_widgets.cpp.s
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.cpp.s
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.o
+
+# target to build an object file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.o
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.i
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.cpp.s
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.o
+
+# target to build an object file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.o
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.i
+
+# target to preprocess a source file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.i
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.s
+
+# target to generate assembly for a file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.cpp.s
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.o
+
+# target to build an object file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.o
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.i
+
+# target to preprocess a source file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.i
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.s
+
+# target to generate assembly for a file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.cpp.s
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.o
+
+# target to build an object file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.o
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.i
+
+# target to preprocess a source file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.i
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.s
+
+# target to generate assembly for a file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.cpp.s
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.o: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.o
+
+# target to build an object file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.o
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.o
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.i: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.i
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.i
+
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.s: home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.s
+.PHONY : home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+renderer.o: renderer.cpp.o
+.PHONY : renderer.o
+
+# target to build an object file
+renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/renderer.cpp.o
+.PHONY : renderer.cpp.o
+
+renderer.i: renderer.cpp.i
+.PHONY : renderer.i
+
+# target to preprocess a source file
+renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/renderer.cpp.i
+.PHONY : renderer.cpp.i
+
+renderer.s: renderer.cpp.s
+.PHONY : renderer.s
+
+# target to generate assembly for a file
+renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/renderer.cpp.s
+.PHONY : renderer.cpp.s
+
+widgets.o: widgets.cpp.o
+.PHONY : widgets.o
+
+# target to build an object file
+widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/widgets.cpp.o
+.PHONY : widgets.cpp.o
+
+widgets.i: widgets.cpp.i
+.PHONY : widgets.i
+
+# target to preprocess a source file
+widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/widgets.cpp.i
+.PHONY : widgets.cpp.i
+
+widgets.s: widgets.cpp.s
+.PHONY : widgets.s
+
+# target to generate assembly for a file
+widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pathfinding.dir/build.make CMakeFiles/Pathfinding.dir/widgets.cpp.s
+.PHONY : widgets.cpp.s
 
 # Help Target
 help:
@@ -305,28 +473,49 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... PathfindingCityMap.o"
-	@echo "... PathfindingCityMap.i"
-	@echo "... PathfindingCityMap.s"
-	@echo "... imgui/backends/imgui_impl_glfw.o"
-	@echo "... imgui/backends/imgui_impl_glfw.i"
-	@echo "... imgui/backends/imgui_impl_glfw.s"
-	@echo "... imgui/backends/imgui_impl_opengl3.o"
-	@echo "... imgui/backends/imgui_impl_opengl3.i"
-	@echo "... imgui/backends/imgui_impl_opengl3.s"
-	@echo "... imgui/imgui.o"
-	@echo "... imgui/imgui.i"
-	@echo "... imgui/imgui.s"
-	@echo "... imgui/imgui_draw.o"
-	@echo "... imgui/imgui_draw.i"
-	@echo "... imgui/imgui_draw.s"
-	@echo "... imgui/imgui_tables.o"
-	@echo "... imgui/imgui_tables.i"
-	@echo "... imgui/imgui_tables.s"
-	@echo "... imgui/imgui_widgets.o"
-	@echo "... imgui/imgui_widgets.i"
-	@echo "... imgui/imgui_widgets.s"
+	@echo "... Pathfinding"
+	@echo "... algos.o"
+	@echo "... algos.i"
+	@echo "... algos.s"
+	@echo "... appStateMachine.o"
+	@echo "... appStateMachine.i"
+	@echo "... appStateMachine.s"
+	@echo "... controller.o"
+	@echo "... controller.i"
+	@echo "... controller.s"
+	@echo "... fileMapHandler.o"
+	@echo "... fileMapHandler.i"
+	@echo "... fileMapHandler.s"
+	@echo "... graph.o"
+	@echo "... graph.i"
+	@echo "... graph.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_glfw.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/backends/imgui_impl_opengl3.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_draw.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_tables.s"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.o"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.i"
+	@echo "... home/anton/Documents/polytech_proga/HeapStackAndPathfinding/imgui/imgui_widgets.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... renderer.o"
+	@echo "... renderer.i"
+	@echo "... renderer.s"
+	@echo "... widgets.o"
+	@echo "... widgets.i"
+	@echo "... widgets.s"
 .PHONY : help
 
 

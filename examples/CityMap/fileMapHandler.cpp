@@ -1,5 +1,4 @@
 #include <fileMapHandler.hpp>
-#include <graph.hpp>
 
 #include <osmium/io/any_input.hpp>
 #include <osmium/util/file.hpp>
@@ -131,46 +130,36 @@ class RoadHandler : public osmium::handler::Handler
             }
         }
 };
+
 bool OSMDataReader::FileIsSet()
 {
-    return (fileName != NULL) && (fileName[0] == '\0');
+    return fileName != nullptr;
 }
+
 bool OSMDataReader::BoundIsSet()
 {
-    return box->valid();
+    return box.valid();
 }
-Graph OSMDataReader::ReadFile()
+
+void OSMDataReader::ReadFile()
 {
     try
     {
         const osmium::io::File inputFile{fileName};
-
+        this->graph.box = box;
         osmium::io::Reader nodeReader{inputFile, osmium::osm_entity_bits::node};
         NodeHandler nodeHandler(graph);
-
         status = FMHStatus::ReadingNodes;
-        std::cout << "\nStarted reading nodes\n";
-
         osmium::apply(nodeReader, nodeHandler);
 
-        std::cout << "\nCompleted reading nodes\n";
-
-        status = FMHStatus::ConstructingGraph;
         RoadHandler roadHandler(*this);
-
         osmium::io::Reader roadReader{inputFile, osmium::osm_entity_bits::way};
-
-        std::cout << "\nConstructing graph\n";
-
+        status = FMHStatus::ConstructingGraph;
         osmium::apply(roadReader, roadHandler);
 
-        std::cout << "\nCompleted constructing graph\n";
         status = FMHStatus::Ready;
-        //const osmium::MemoryUsage memory;
 
-        //std::cout << "\nMemory used: " << memory.peak() << " MBytes\n";
-
-        return graph;
+        this->graph = graph;
     }
 
     catch(const std::exception e)

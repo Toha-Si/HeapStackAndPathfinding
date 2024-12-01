@@ -1,5 +1,5 @@
+#pragma once
 #include <graph.hpp>
-#include <osmium/osm/box.hpp>
 
 enum class FMHStatus
 {
@@ -12,14 +12,14 @@ enum class FMHStatus
 class OSMDataReader
 {
     public:
-        const char* fileName;
-        const osmium::Box* box;
+        char* fileName = nullptr;
+        osmium::Box box;
 
         Graph graph;
         FMHStatus status = FMHStatus::Idle;
         double distanceCutoff = 5000;
 
-        Graph ReadFile();
+        void ReadFile();
 
         bool FileIsSet();
         bool BoundIsSet();

@@ -52,12 +52,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/Platform/Linux.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/Platform/UnixPaths.cmake"
   "/home/anton/.local/lib/python3.10/site-packages/cmake/data/share/cmake-3.31/Modules/SelectLibraryConfigurations.cmake"
+  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/CMakeLists.txt"
+  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/cmake/FindOsmium.cmake"
+  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/cmake/FindProtozero.cmake"
   "CMakeFiles/3.31.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.31.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.31.0/CMakeSystem.cmake"
-  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/CMakeLists.txt"
-  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/cmake/FindOsmium.cmake"
-  "/home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/cmake/FindProtozero.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake"
@@ -77,5 +77,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Pathfinding.dir/DependInfo.cmake"
+  "CMakeFiles/test.dir/DependInfo.cmake"
   )

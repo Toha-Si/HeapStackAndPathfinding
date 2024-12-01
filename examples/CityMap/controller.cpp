@@ -2,20 +2,23 @@
 
 #include <iostream>
 #include <cstdint> 
-#include <GLFW/glfw3.h>
-#include <renderer.hpp>
+#include <inputDataGL.hpp>
 
 void Input::BindCallbacks(GLFWwindow* window)
 {
-    glfwSetWindowUserPointer(window, this);
-    glfwSetScrollCallback(window, ScrollCallback);
-    glfwSetMouseButtonCallback(window, MouseButtonCallback);
-    glfwSetCursorPosCallback(window, CursorPositionCallback);
+    glfwSetMouseButtonCallback(window, Input::MouseButtonCallback);
+    glfwSetCursorPosCallback(window, Input::CursorPositionCallback);
 }
 
 void Input::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
-    Input* input = (Input*) glfwGetWindowUserPointer(window);
+    WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+    if (!data || !data->input)
+    {
+        return;
+    }
+
+    Input* input = data->input;
 
     if (button == GLFW_MOUSE_BUTTON_LEFT)
     {
@@ -33,9 +36,15 @@ void Input::MouseButtonCallback(GLFWwindow* window, int button, int action, int 
 
 void Input::CursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    Input* input = (Input*) glfwGetWindowUserPointer(window);
-    Renderer* rnd = (Renderer*) glfwGetWindowUserPointer(window);
-    Camera& cam = rnd->cam;
+    WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+
+    if (!data || !data->renderer || !data->input)
+    {
+        return;
+    }
+
+    Input* input = data->input;
+    Camera& cam = data->renderer->cam;
 
     if (input->isDragging)
     {
@@ -48,23 +57,4 @@ void Input::CursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
         input->lastMouseX = xpos;
         input->lastMouseY = ypos;
     }
-}
-//@Todo: move to renderer class?
-void Input::ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
-{
-    Renderer* rnd = (Renderer*) glfwGetWindowUserPointer(window);
-    Camera& cam = rnd->cam;
-
-    double cursorX, cursorY;
-    glfwGetCursorPos(window, &cursorX, &cursorY);
-    glm::vec2 csrWorldBefore = rnd->CursorToWorld(glm::vec2(cursorX, cursorY));
-
-    float zoomFactor = (yoffset > 0) ? 1.1f : 0.9f;
-    cam.SetScale(cam.scale * zoomFactor);
-
-    glm::vec2 csrWorldAfter = rnd->CursorToWorld(glm::vec2(cursorX, cursorY));
-
-    // Корректируем смещение, чтобы курсор оставался в том же месте в мировых координатах
-    cam.positionX += (csrWorldBefore.x - csrWorldAfter.x);
-    cam.positionY += (csrWorldBefore.y - csrWorldAfter.y);
 }

@@ -20,8 +20,17 @@ find_package(GLUT REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 
-set(IMGUI_DIR imgui)
-set(IMGUI_SRC
+set(IMGUI_DIR ../../imgui)
+
+set(SOURCES
+    main.cpp
+    appStateMachine.cpp
+    fileMapHandler.cpp
+    graph.cpp
+    controller.cpp
+    renderer.cpp
+    widgets.cpp
+    algos.cpp
     ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui_draw.cpp
     ${IMGUI_DIR}/imgui_widgets.cpp
@@ -30,15 +39,29 @@ set(IMGUI_SRC
     ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
+set(HEADERS
+    appStateMachine.hpp
+    fileMapHandler.hpp
+    graph.hpp
+    controller.hpp
+    renderer.hpp
+    widgets.hpp
+    algos.hpp
+    inputDataGL.hpp
+)
+
 include_directories(${OSMIUM_INCLUDE_DIRS} 
                     ${PROTOZERO_INCLUDE_DIR} 
                     ${OPENGL_INCLUDE_DIRS} 
                     ${GLUT_UNCLUDE_DIRS} 
-                    ${IMGUI_DIR} ${IMGUI_DIR}/backends)
+                    ${IMGUI_DIR} ${IMGUI_DIR}/backends
+                    ${CMAKE_SOURCE_DIR})
 
-add_executable(test PathfindingCityMap.cpp ${IMGUI_SRC})
+add_executable(Pathfinding ${SOURCES} ${HEADERS})
 
-target_link_libraries(test 
+#target_include_directories(Pathfinding PRIVATE ${CMAKE_SOURCE_DIR})
+
+target_link_libraries(Pathfinding 
                     ${OSMIUM_IO_LIBRARIES} 
                     ${OPENGL_LIBRARIES} 
                     ${GLUT_LIBRARIES}

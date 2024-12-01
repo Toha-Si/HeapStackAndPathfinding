@@ -1,48 +1,71 @@
 #include <widgets.hpp>
-
+#include <iostream>
 #include <imgui.h>
 
-void SelectionUI::show()
+//UI IMPLEMENTATION
+UI::UI(Application& application) : app(application)
 {
-    if (ImGui::Begin("File Dropdown"))
-    {
-        if (ImGui::Combo("Select file", &selectedFile, files, IM_ARRAYSIZE(files)))
-        {
-            app.mapReader.fileName = files[selectedFile];
-        }
-        ImGui::End();
-    }
-
-    if (ImGui::Begin("Bound Dropdown"))
-    {
-        if (ImGui::Combo("Select bound", &selectedBound, boundNames, IM_ARRAYSIZE(boundNames)))
-        {
-            //if I destroy selection ui, then null reference exception may arise when accessing app.mapReader.box?
-            app.mapReader.box = &bounds[selectedBound];
-        }
-        ImGui::End();
-    }
+    
 }
 
-void LoadingUI::show()
+UI::~UI() {}
+//SELECTION UI
+SelectionUI::SelectionUI(Application& application) : UI(application) 
 {
-    if(ImGui::Begin("Loading Animation")) 
+    
+}
+
+void SelectionUI::Show()
+{
+    //Initially it was in a constructor above, but app would randomly segfault¯\_(ツ)_/¯
+    if(!app.mapReader.BoundIsSet() && !app.mapReader.FileIsSet())
     {
-        ImGui::Text("Loading...");
-        DrawLoadingAnimation(StatusToString(app.mapReader.status), 20.0f, 12, 4.0f, 3.0f);
+        app.mapReader.fileName = files[selectedFile];
+        app.mapReader.box = bounds[selectedBound];
+    }
+
+    ImGui::Begin("File Dropdown");
+
+    if(ImGui::Combo("Select file", &selectedFile, files, IM_ARRAYSIZE(files)))
+    {
+        app.mapReader.fileName = files[selectedFile];
+    }
+
+    if (ImGui::Combo("Select bound", &selectedBound, boundNames, IM_ARRAYSIZE(boundNames), 5))
+    {
+        app.mapReader.box = bounds[selectedBound];
+    }
+
+    if (ImGui::Button("Load"))
+    {
+        app.shouldLoad = true;
     }
 
     ImGui::End();
 }
 
-char* LoadingUI::StatusToString(FMHStatus s)
+//LOADING UI
+LoadingUI::LoadingUI(Application& application) : UI(application) 
+{
+
+}
+
+void LoadingUI::Show()
+{
+    ImGui::Begin("Loading map");
+    ImGui::Text(StatusToString(app.mapReader.status).data());
+    DrawLoadingAnimation(StatusToString(app.mapReader.status).data(), 20.0f, 12, 4.0f, 3.0f);
+    ImGui::End();
+}
+
+std::string LoadingUI::StatusToString(FMHStatus s)
 {
     switch (s)
     {
-        case FMHStatus::Ready:   return "Map is ready";
-        case FMHStatus::ReadingNodes:   return "Reading input file";
-        case FMHStatus::ConstructingGraph: return "Creating map";
-        default:      return "Not started";
+        case FMHStatus::Ready:   return std::string("Map is ready");
+        case FMHStatus::ReadingNodes:   return std::string("Reading input file");
+        case FMHStatus::ConstructingGraph: return std::string("Creating map");
+        default:      return std::string("Not started");
     }
 }
 
@@ -90,7 +113,166 @@ void LoadingUI::DrawLoadingAnimation(const char* label, float radius, int num_se
     ImGui::Dummy(ImVec2(radius * 2, radius * 2));
 }
 
-void MapUI::show()
+//MAP UI
+MapUI::MapUI(Application& application) : UI(application)
 {
+    searchAlgo = new Djkstra();
+}
 
+void MapUI::Show()
+{
+    auto* map = dynamic_cast<MapState*>(app.GetCurrentState());
+    app.input->controlCamera = true;
+
+    switch(map->state)
+    {
+        case MapNavigationState::Roaming:
+        {
+            DrawWayInfo(map, false);
+            break;
+        }
+        case MapNavigationState::WaypointSelection:
+        {
+            DrawWayInfo(map, true);
+            glm::vec2 mousePos(app.input->lastMouseX, app.input->lastMouseY);
+            int nearestNodeID = 0;
+
+            //if (app.mapReader.graph.TryGetNearestNodeID(app.renderer.ScreenToLocation(mousePos, app.mapReader.graph.box), nearestNodeID))
+            //{
+                //DrawNodeInfo(nearestNodeID);
+
+            //    if(ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+            //    {
+            //        //SetWaypoint(nearestNodeID);
+            //    }
+            //}
+            break;
+        }
+        case MapNavigationState::Pause:
+        {
+            app.input->controlCamera = false;
+            DrawAppNavWindow();
+            break;
+        }
+    }
+}
+
+void MapUI::DrawAppNavWindow()
+{
+    ImGui::Begin("Pathfinding app");
+    
+    if(ImGui::Button("Resume"))
+    {
+        //@Todo: save previous state and go back to that state
+        //map->state = MapNavigationState::Roaming;
+    }
+
+    if(ImGui::Button("Go to main"))
+    {
+
+    }
+
+    if(ImGui::Button("Exit"))
+    {
+
+    }
+    
+    ImGui::End();
+}
+
+void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
+{
+    ImGui::Begin("Way info");
+    
+    if(ImGui::Button("DFS"))
+    {
+        delete searchAlgo;
+        searchAlgo = new DFS();
+    }
+
+    ImGui::SameLine();
+
+    if(ImGui::Button("BFS"))
+    {
+        delete searchAlgo;
+        searchAlgo = new BFS();
+    }
+
+    ImGui::SameLine();
+
+    if(ImGui::Button("Djkstra"))
+    {
+        delete searchAlgo;
+        searchAlgo = new Djkstra();
+    }
+
+    ImGui::SameLine();
+
+    if(ImGui::Button("Astar"))
+    {
+        delete searchAlgo;
+        searchAlgo = new Astar();
+    }
+
+
+    if(startNodeSet)
+    {
+        //ImGui::Text("Start point: " + startNodeID);
+    }
+
+    if(endNodeSet)
+    {
+        //ImGui::Text("End point: " + endNodeID);
+    }
+
+    if(!isSelecting)
+    {
+        if(ImGui::Button("Choose waypoints"))
+        {
+            map->state = MapNavigationState::WaypointSelection;
+        }
+    }
+    else
+    {
+        if(ImGui::Button("Roam map"))
+        {
+            map->state = MapNavigationState::Roaming;
+            ResetWaypoints();
+        }
+
+        if(ImGui::Button("Find way"))
+        {
+            //auto way = searchAlgo->FindWay(app.mapReader.graph, startNodeID, endNodeID);
+        }
+    }
+
+    ImGui::End();
+}
+
+void MapUI::DrawNodeInfo(int ID)
+{
+    if(ImGui::BeginTooltip())
+    {
+        ImGui::Text("ssss");
+        ImGui::EndTooltip();
+    }
+}
+
+void MapUI::SetWaypoint(int ID)
+{
+    if(!startNodeSet)
+    {
+        startNodeSet = true;
+        startNodeID = ID;
+        return;
+    }
+
+    endNodeSet = true;
+    endNodeID = ID;
+}
+
+void MapUI::ResetWaypoints()
+{
+    startNodeSet, endNodeSet = false;
+    startNodeID, endNodeID = 0;
 }

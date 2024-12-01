@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/libosmium/include",
                 "${workspaceFolder}/imgui",
-                "${workspaceFolder}/examples/CityMap"
+                "${workspaceFolder}/examples/CityMap",
+                "${workspaceFolder}/examples"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

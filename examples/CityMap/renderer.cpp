@@ -1,5 +1,5 @@
 #include <renderer.hpp>
-
+#include <inputDataGL.hpp>
 void Camera::SetPosition(float x, float y)
 {
     //@Todo: clamp values so can't go past a bounding box
@@ -15,65 +15,84 @@ void Camera::SetScale(float scale)
 
 void Renderer::CreateMap(Graph& map)
 {
-    this->vertices = map.GetVerticesScreenSpace(*this);
+    this->vertices = CreateVerticesFrom(map);
 
-    GLuint VBO;
     glGenBuffers(1, &VBO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);    
 }
 
-void Renderer::BindWindowSizeCallback(GLFWwindow*& window)
+void Renderer::BindCallbacks(GLFWwindow* window)
 {
-    glfwSetWindowUserPointer(window, this);
-    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
-
-    float lastFrameTime = glfwGetTime();
+    glfwSetFramebufferSizeCallback(window, Renderer::FramebufferSizeCallback);
+    glfwSetScrollCallback(window, Renderer::ScrollCallback);
 }
 
-void Renderer::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+void Renderer::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
-    Renderer* rndr = (Renderer*) glfwGetWindowUserPointer(window);
+    WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+    if (!data || !data->renderer)
+    {
+        return;
+    }
+
+    Renderer* rndr = data->renderer;
+
     rndr->windowWidth = width;
     rndr->windowHeight = height;
-    glViewport(0, 0, width, height);
+    glViewport(0, 0, rndr->windowWidth, rndr->windowHeight);
+}
+
+void Renderer::ScrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+    if (!data || !data->renderer)
+    {
+        return;
+    }
+
+    Renderer* rndr = data->renderer;
+
+    double cursorX, cursorY;
+    glfwGetCursorPos(window, &cursorX, &cursorY);
+    glm::vec2 csrWorldBefore = rndr->CursorToCamPos(glm::vec2(cursorX, cursorY));
+
+    float zoomFactor = (yoffset > 0) ? 1.1f : 0.9f;
+    rndr->cam.SetScale(rndr->cam.scale * zoomFactor);
+
+    glm::vec2 csrWorldAfter = rndr->CursorToCamPos(glm::vec2(cursorX, cursorY));
+
+    // Корректируем смещение, чтобы курсор оставался в том же месте в мировых координатах
+    rndr->cam.positionX += (csrWorldBefore.x - csrWorldAfter.x);
+    rndr->cam.positionY += (csrWorldBefore.y - csrWorldAfter.y);
 }
 
 void Renderer::RenderVertices(GLFWwindow* window)
 {
-        float currentFrameTime = glfwGetTime();
-        float deltaTime = currentFrameTime - lastFrameTime;
-        lastFrameTime = currentFrameTime;
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-0.5f * windowWidth  / cam.scale + cam.positionX, 
+             0.5f * windowWidth  / cam.scale + cam.positionX, 
+            -0.5f * windowHeight / cam.scale + cam.positionY, 
+             0.5f * windowHeight / cam.scale + cam.positionY, 
+            -1.0f, 1.0f);
 
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-0.5f * windowWidth / cam.scale + cam.positionX, 
-                 0.5f * windowWidth / cam.scale + cam.positionX, 
-                -0.5f * windowHeight / cam.scale + cam.positionY, 
-                 0.5f * windowHeight / cam.scale + cam.positionY, 
-                -1.0f, 1.0f);
-
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glVertexPointer(2, GL_FLOAT, 0, nullptr);
-        glDrawArrays(GL_LINES, 0, vertices.size() / 2);
-        glDisableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(2, GL_FLOAT, 0, nullptr);
+    glDrawArrays(GL_LINES, 0, vertices.size() / 2);
+    glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void Renderer::Render(GLFWwindow* window)
 {
-    if(!vertices.empty())
-    {
-        RenderVertices(window);
-    }
+    glClear(GL_COLOR_BUFFER_BIT);
 
-    ui->show();
+    if(vertices.empty()) return;
 
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+    RenderVertices(window);
 }
+
 glm::vec2 Renderer::LocationToScreen(const osmium::Location& location, const osmium::Box& bounds)
 {
     double u = (bounds.left()  -  location.lon()) / (bounds.left() - bounds.right()) * windowWidth;
@@ -82,7 +101,15 @@ glm::vec2 Renderer::LocationToScreen(const osmium::Location& location, const osm
     return glm::vec2(u, v);
 }
 
-glm::vec2 Renderer::CursorToWorld(const glm::vec2& cursorPos)
+osmium::Location Renderer::ScreenToLocation(const glm::vec2& screenLoc, const osmium::Box& bounds)
+{
+    double lon = bounds.left() - screenLoc.x / windowWidth * (bounds.left() - bounds.right());
+    double lat = screenLoc.y / windowHeight * (bounds.top() - bounds.bottom()) - bounds.bottom();
+
+    return osmium::Location(lon, lat);
+}
+
+glm::vec2 Renderer::CursorToCamPos(const glm::vec2& cursorPos)
 {
     glm::vec2 cursorWorld;
     // Переводим экранные координаты в диапазон [-1, 1]
@@ -95,57 +122,31 @@ glm::vec2 Renderer::CursorToWorld(const glm::vec2& cursorPos)
 
     return cursorWorld;
 }
-// void Renderer::RenderVertices(GLFWwindow* window, const std::vector<float>& vertices)
-// {
-//     GLuint VBO;
-//     glGenBuffers(1, &VBO);
-//
-//     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
-//
-//     float lastFrameTime = glfwGetTime();
-//
-//     while (!glfwWindowShouldClose(window))
-//     {
-//         float currentFrameTime = glfwGetTime();
-//         float deltaTime = currentFrameTime - lastFrameTime;
-//         lastFrameTime = currentFrameTime;
-//
-//         glClear(GL_COLOR_BUFFER_BIT);
-//
-//         glMatrixMode(GL_PROJECTION);
-//         glLoadIdentity();
-//         glOrtho(-0.5f * WINDOW_WIDTH / zoom + offsetX, 
-//                 0.5f * WINDOW_WIDTH  / zoom + offsetX, 
-//                -0.5f * WINDOW_HEIGHT / zoom + offsetY, 
-//                 0.5f * WINDOW_HEIGHT / zoom + offsetY, 
-//                -1.0f, 1.0f);
-//
-//         glEnableClientState(GL_VERTEX_ARRAY);
-//         glVertexPointer(2, GL_FLOAT, 0, nullptr);
-//         glDrawArrays(GL_LINES, 0, vertices.size() / 2);
-//         glDisableClientState(GL_VERTEX_ARRAY);
-//
-//         ImGui_ImplOpenGL3_NewFrame();
-//         ImGui_ImplGlfw_NewFrame();
-//         ImGui::NewFrame();
-//
-//         ImGui::Begin("UI Controls");
-//         ImGui::Text("Graph Visualization");
-//         ImGui::SliderFloat("Zoom", &zoom, 0.01f, 100.0f);
-//         ImGui::SliderFloat("Offset X", &offsetX, -100.0f, 100.0f);
-//         ImGui::SliderFloat("Offset Y", &offsetY, -100.0f, 100.0f);
-//
-//         if (ImGui::Button("Reset View")) {
-//             zoom = 1.0f;
-//             offsetX = 0.0f;
-//             offsetY = 0.0f;
-//         }
-//         ImGui::End();
-//
-//         ImGui::Render();
-//         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//
-//         glfwSwapBuffers(window);
-//         glfwPollEvents();
-// }
+
+std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
+{
+    std::vector<float> vertices;
+
+    for (const auto& [nodeID, edges] : graph.data) 
+    {
+        //osmium::Location nodeFrom = graph.nodeLocations[nodeID];
+        glm::vec2 nodeFrom = LocationToScreen(graph.nodeLocations[nodeID], graph.box);
+
+        for (const auto& edge : edges) 
+        {
+            //osmium::Location nodeTo = graph.nodeLocations[edge.nodeToID];
+            glm::vec2 nodeTo = LocationToScreen(graph.nodeLocations[edge.nodeToID], graph.box);
+
+            vertices.push_back(nodeFrom.x);
+            vertices.push_back(nodeFrom.y);
+            vertices.push_back(nodeTo.x);
+            vertices.push_back(nodeTo.y);
+            // vertices.push_back(nodeFrom.lon());
+            // vertices.push_back(nodeFrom.lat());
+            // vertices.push_back(nodeTo.lon());
+            // vertices.push_back(nodeTo.lat());
+        }
+    }
+
+    return vertices;
+}

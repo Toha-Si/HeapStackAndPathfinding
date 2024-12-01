@@ -1,24 +1,28 @@
 #include <graph.hpp>
-#include <glm/glm.hpp>
+#include <osmium/geom/haversine.hpp>
+#include <limits>
 
-std::vector<float> Graph::GetVerticesScreenSpace(Renderer& rndr)
+bool Graph::TryGetNearestNodeID(osmium::Location worldCursorPos, int& foundNodeID)
 {
-    std::vector<float> vertices;
+    double minDistance = std::numeric_limits<double>::infinity();
+    int nearestNodeID = -1;
 
     for (const auto& [nodeID, edges] : data) 
     {
-        glm::vec2 nodeFrom = rndr.LocationToScreen(nodeLocations[nodeID], box);
-
-        for (const auto& edge : edges) 
+        const auto& distance = osmium::geom::haversine::distance(osmium::geom::Coordinates(worldCursorPos), 
+                                                                 osmium::geom::Coordinates(nodeLocations[nodeID]));
+        if (distance < minDistance)
         {
-            glm::vec2 nodeTo = rndr.LocationToScreen(nodeLocations[edge.nodeToID], box);
-
-            vertices.push_back(nodeFrom.x);
-            vertices.push_back(nodeFrom.y);
-            vertices.push_back(nodeTo.x);
-            vertices.push_back(nodeTo.y);
+            nearestNodeID = nodeID;
+            minDistance = distance;
         }
     }
 
-    return vertices;
+    if(nearestNodeID == -1)
+    {
+        return false;
+    }
+
+    foundNodeID = nearestNodeID;
+    return true;
 }
