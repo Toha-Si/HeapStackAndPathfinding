@@ -15,6 +15,7 @@ if(NOT PROTOZERO_FOUND)
     message(WARNING "Protozero not found!\n")
 endif()
 
+find_package(Boost REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 find_package(GLEW REQUIRED)
@@ -55,6 +56,7 @@ include_directories(${OSMIUM_INCLUDE_DIRS}
                     ${OPENGL_INCLUDE_DIRS} 
                     ${GLUT_UNCLUDE_DIRS} 
                     ${IMGUI_DIR} ${IMGUI_DIR}/backends
+                    ${Boost_INCLUDE_DIRS}
                     ${CMAKE_SOURCE_DIR})
 
 add_executable(Pathfinding ${SOURCES} ${HEADERS})

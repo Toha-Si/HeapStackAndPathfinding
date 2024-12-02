@@ -113,7 +113,7 @@ glm::vec2 Renderer::CursorToCamPos(const glm::vec2& cursorPos)
     float normalizedY = 1.0f - (2.0f * cursorPos.y) / windowHeight; // Y инвертирован в OpenGL
 
     // Переводим нормализованные координаты в мировое пространство
-    cursorWorld.x = normalizedX * (0.5f * windowWidth / cam.scale) + cam.positionX;
+    cursorWorld.x = normalizedX * (0.5f * windowWidth  / cam.scale) + cam.positionX;
     cursorWorld.y = normalizedY * (0.5f * windowHeight / cam.scale) + cam.positionY;
 
     return cursorWorld;
@@ -126,17 +126,10 @@ std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
     for (const auto& [nodeID, edges] : graph.data) 
     {
         osmium::Location nodeFrom = graph.nodeLocations[nodeID];
-        //glm::vec2 nodeFrom = LocationToScreen(graph.nodeLocations[nodeID], graph.box);
 
         for (const auto& edge : edges) 
         {
             osmium::Location nodeTo = graph.nodeLocations[edge.nodeToID];
-            //glm::vec2 nodeTo = LocationToScreen(graph.nodeLocations[edge.nodeToID], graph.box);
-
-            // vertices.push_back(nodeFrom.x);
-            // vertices.push_back(nodeFrom.y);
-            // vertices.push_back(nodeTo.x);
-            // vertices.push_back(nodeTo.y);
             vertices.push_back(nodeFrom.lon());
             vertices.push_back(nodeFrom.lat());
             vertices.push_back(nodeTo.lon());

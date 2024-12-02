@@ -6,6 +6,7 @@ enum class FMHStatus
     Idle,
     ReadingNodes,
     ConstructingGraph,
+    CreatingRTree,
     Ready
 };
  

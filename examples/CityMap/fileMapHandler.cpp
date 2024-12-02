@@ -146,7 +146,7 @@ void OSMDataReader::ReadFile()
     try
     {
         const osmium::io::File inputFile{fileName};
-        this->graph.box = box;
+        graph.box = box;
         osmium::io::Reader nodeReader{inputFile, osmium::osm_entity_bits::node};
         NodeHandler nodeHandler(graph);
         status = FMHStatus::ReadingNodes;
@@ -156,10 +156,11 @@ void OSMDataReader::ReadFile()
         osmium::io::Reader roadReader{inputFile, osmium::osm_entity_bits::way};
         status = FMHStatus::ConstructingGraph;
         osmium::apply(roadReader, roadHandler);
+        
+        status = FMHStatus::CreatingRTree;
+        graph.rtree = graph.BuildRTree();
 
         status = FMHStatus::Ready;
-
-        this->graph = graph;
     }
 
     catch(const std::exception e)

@@ -65,7 +65,8 @@ std::string LoadingUI::StatusToString(FMHStatus s)
         case FMHStatus::Ready:   return std::string("Map is ready");
         case FMHStatus::ReadingNodes:   return std::string("Reading input file");
         case FMHStatus::ConstructingGraph: return std::string("Creating map");
-        default:      return std::string("Not started");
+        case FMHStatus::CreatingRTree: return std::string("Building R-tree");
+        default:      return std::string("Working");
     }
 }
 
@@ -128,6 +129,15 @@ void MapUI::Show()
     {
         case MapNavigationState::Roaming:
         {
+            glm::vec2 mousePos(app.input->mouseX, app.input->mouseY);
+            osmium::Location mouseLoc = app.renderer->ScreenToLocation(mousePos);
+            if(mouseLoc.valid())
+            {
+                ImGui::BeginTooltip();
+                std::string locationText = std::to_string(mouseLoc.lon()) + " " + std::to_string(mouseLoc.lat());
+                ImGui::Text("%s", locationText.c_str());
+                ImGui::EndTooltip();
+            }
             DrawWayInfo(map, false);
             break;
         }
@@ -142,8 +152,8 @@ void MapUI::Show()
             if (app.mapReader.graph.TryGetNearestNodeID(app.renderer->ScreenToLocation(mousePos), nearestNodeID))
             {
                 DrawNodeInfo(nearestNodeID);
-                auto locScreenSpace = app.mapReader.graph.nodeLocations[nearestNodeID];
-                app.renderer->DrawPoint(locScreenSpace.lon(), locScreenSpace.lat(), 10, 0, 1, 0);
+                auto nearestPoint = app.mapReader.graph.nodeLocations[nearestNodeID];
+                app.renderer->DrawPoint(nearestPoint.lon(), nearestPoint.lat(), 10, 0, 1, 0);
             //    if(ImGui::IsMouseClicked(ImGuiMouseButton_Left))
             //    {
             //        //SetWaypoint(nearestNodeID);

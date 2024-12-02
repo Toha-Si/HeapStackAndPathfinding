@@ -19,8 +19,8 @@ class Camera
         void SetScale(float scale);
 
     private:
-        float minScale = 0.0001f; //Should depend on size of a bounding box?
-        float maxScale = 100000;
+        float minScale = 0.1f; //Should depend on size of a bounding box?
+        float maxScale = 1000000;
 };
 
 class Renderer
