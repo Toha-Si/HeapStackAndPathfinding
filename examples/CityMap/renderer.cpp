@@ -93,18 +93,14 @@ void Renderer::Render(GLFWwindow* window)
     RenderVertices(window);
 }
 
-glm::vec2 Renderer::LocationToScreen(const osmium::Location& location, const osmium::Box& bounds)
+osmium::Location Renderer::ScreenToLocation(const glm::vec2& screenLoc)
 {
-    double u = (bounds.left()  -  location.lon()) / (bounds.left() - bounds.right()) * windowWidth;
-    double v = (location.lat() - bounds.bottom()) / (bounds.top() - bounds.bottom()) * windowHeight;
+    float normalizedX = (2.0f * screenLoc.x) / windowWidth - 1.0f;
+    float normalizedY = 1.0f - (2.0f * screenLoc.y) / windowHeight; // Y инвертирован в OpenGL
 
-    return glm::vec2(u, v);
-}
-
-osmium::Location Renderer::ScreenToLocation(const glm::vec2& screenLoc, const osmium::Box& bounds)
-{
-    double lon = bounds.left() - screenLoc.x / windowWidth * (bounds.left() - bounds.right());
-    double lat = screenLoc.y / windowHeight * (bounds.top() - bounds.bottom()) - bounds.bottom();
+    // Переводим нормализованные координаты в мировое пространство
+    double lon = normalizedX * (0.5f * windowWidth / cam.scale) + cam.positionX;
+    double lat = normalizedY * (0.5f * windowHeight / cam.scale) + cam.positionY;
 
     return osmium::Location(lon, lat);
 }
@@ -129,24 +125,34 @@ std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
 
     for (const auto& [nodeID, edges] : graph.data) 
     {
-        //osmium::Location nodeFrom = graph.nodeLocations[nodeID];
-        glm::vec2 nodeFrom = LocationToScreen(graph.nodeLocations[nodeID], graph.box);
+        osmium::Location nodeFrom = graph.nodeLocations[nodeID];
+        //glm::vec2 nodeFrom = LocationToScreen(graph.nodeLocations[nodeID], graph.box);
 
         for (const auto& edge : edges) 
         {
-            //osmium::Location nodeTo = graph.nodeLocations[edge.nodeToID];
-            glm::vec2 nodeTo = LocationToScreen(graph.nodeLocations[edge.nodeToID], graph.box);
+            osmium::Location nodeTo = graph.nodeLocations[edge.nodeToID];
+            //glm::vec2 nodeTo = LocationToScreen(graph.nodeLocations[edge.nodeToID], graph.box);
 
-            vertices.push_back(nodeFrom.x);
-            vertices.push_back(nodeFrom.y);
-            vertices.push_back(nodeTo.x);
-            vertices.push_back(nodeTo.y);
-            // vertices.push_back(nodeFrom.lon());
-            // vertices.push_back(nodeFrom.lat());
-            // vertices.push_back(nodeTo.lon());
-            // vertices.push_back(nodeTo.lat());
+            // vertices.push_back(nodeFrom.x);
+            // vertices.push_back(nodeFrom.y);
+            // vertices.push_back(nodeTo.x);
+            // vertices.push_back(nodeTo.y);
+            vertices.push_back(nodeFrom.lon());
+            vertices.push_back(nodeFrom.lat());
+            vertices.push_back(nodeTo.lon());
+            vertices.push_back(nodeTo.lat());
         }
     }
 
     return vertices;
+}
+
+void Renderer::DrawPoint(float x, float y, float size, float red, float green, float blue)
+{
+    glPointSize(size);
+    glColor3f(red, green, blue);
+    glBegin(GL_POINTS);
+    glVertex2f(x, y);
+    glEnd();
+    glColor3f(1, 1, 1); 
 }

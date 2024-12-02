@@ -134,18 +134,21 @@ void MapUI::Show()
         case MapNavigationState::WaypointSelection:
         {
             DrawWayInfo(map, true);
-            glm::vec2 mousePos(app.input->lastMouseX, app.input->lastMouseY);
+
+            glm::vec2 mousePos(app.input->mouseX, app.input->mouseY);
+            
             int nearestNodeID = 0;
 
-            //if (app.mapReader.graph.TryGetNearestNodeID(app.renderer.ScreenToLocation(mousePos, app.mapReader.graph.box), nearestNodeID))
-            //{
-                //DrawNodeInfo(nearestNodeID);
-
+            if (app.mapReader.graph.TryGetNearestNodeID(app.renderer->ScreenToLocation(mousePos), nearestNodeID))
+            {
+                DrawNodeInfo(nearestNodeID);
+                auto locScreenSpace = app.mapReader.graph.nodeLocations[nearestNodeID];
+                app.renderer->DrawPoint(locScreenSpace.lon(), locScreenSpace.lat(), 10, 0, 1, 0);
             //    if(ImGui::IsMouseClicked(ImGuiMouseButton_Left))
             //    {
             //        //SetWaypoint(nearestNodeID);
             //    }
-            //}
+            }
             break;
         }
         case MapNavigationState::Pause:
@@ -251,11 +254,14 @@ void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
 
 void MapUI::DrawNodeInfo(int ID)
 {
-    if(ImGui::BeginTooltip())
-    {
-        ImGui::Text("ssss");
-        ImGui::EndTooltip();
-    }
+    auto& node = app.mapReader.graph.nodeLocations[ID];
+    ImGui::BeginTooltip();
+    std::string nodeNameText = "Node " + std::to_string(ID);
+    ImGui::Text("%s", nodeNameText.c_str());
+    std::string locationText = std::to_string(node.lon()) + " " + std::to_string(node.lat());
+    ImGui::Text("%s", locationText.c_str());
+    ImGui::EndTooltip();
+    
 }
 
 void MapUI::SetWaypoint(int ID)

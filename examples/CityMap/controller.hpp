@@ -8,6 +8,7 @@ class Input
         bool isDragging = false;
         bool controlCamera = false;
         double lastMouseX = 0.0, lastMouseY = 0.0;
+        double mouseX = 0.0, mouseY = 0.0;
 
         void BindCallbacks(GLFWwindow* window);
 

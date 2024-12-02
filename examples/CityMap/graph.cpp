@@ -6,6 +6,7 @@ bool Graph::TryGetNearestNodeID(osmium::Location worldCursorPos, int& foundNodeI
 {
     double minDistance = std::numeric_limits<double>::infinity();
     int nearestNodeID = -1;
+    double thresholdDistance = 1000;
 
     for (const auto& [nodeID, edges] : data) 
     {
@@ -18,9 +19,9 @@ bool Graph::TryGetNearestNodeID(osmium::Location worldCursorPos, int& foundNodeI
         }
     }
 
-    if(nearestNodeID == -1)
+    if(nearestNodeID == -1 || minDistance > thresholdDistance)
     {
-        return false;
+       return false;
     }
 
     foundNodeID = nearestNodeID;

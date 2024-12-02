@@ -19,8 +19,8 @@ class Camera
         void SetScale(float scale);
 
     private:
-        float minScale = 0.01f; //Should depend on size of a bounding box?
-        float maxScale = 100;
+        float minScale = 0.0001f; //Should depend on size of a bounding box?
+        float maxScale = 100000;
 };
 
 class Renderer
@@ -34,8 +34,8 @@ class Renderer
         void CreateMap(Graph& map);
         void BindCallbacks(GLFWwindow* window);
         void Render(GLFWwindow* window);
-        glm::vec2 LocationToScreen(const osmium::Location& location, const osmium::Box& bounds);
-        osmium::Location ScreenToLocation(const glm::vec2& location, const osmium::Box& bounds);
+        void DrawPoint(float x, float y, float size, float r, float g, float b);
+        osmium::Location ScreenToLocation(const glm::vec2& location);
         glm::vec2 CursorToCamPos(const glm::vec2& cursorPos);
 
     private:

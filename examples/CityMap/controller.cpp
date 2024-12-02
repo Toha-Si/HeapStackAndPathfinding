@@ -42,9 +42,12 @@ void Input::CursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
     {
         return;
     }
-
+    
     Input* input = data->input;
     Camera& cam = data->renderer->cam;
+
+    input->mouseX = xpos;
+    input->mouseY = ypos;
 
     if (input->isDragging)
     {
