@@ -123,14 +123,19 @@ MapUI::MapUI(Application& application) : UI(application)
 void MapUI::Show()
 {
     auto* map = dynamic_cast<MapState*>(app.GetCurrentState());
-    app.input->controlCamera = true;
+    auto& renderer = app.renderer;
+    auto& graph = app.mapReader.graph;
+    auto& input = app.input;
+
+    input->controlCamera = true;
 
     switch(map->state)
     {
         case MapNavigationState::Roaming:
         {
-            glm::vec2 mousePos(app.input->mouseX, app.input->mouseY);
-            osmium::Location mouseLoc = app.renderer->ScreenToLocation(mousePos);
+            glm::vec2 mousePos(input->mouseX, input->mouseY);
+            osmium::Location mouseLoc = renderer->ScreenToLocation(mousePos);
+
             if(mouseLoc.valid())
             {
                 ImGui::BeginTooltip();
@@ -138,32 +143,40 @@ void MapUI::Show()
                 ImGui::Text("%s", locationText.c_str());
                 ImGui::EndTooltip();
             }
+
             DrawWayInfo(map, false);
             break;
         }
+
         case MapNavigationState::WaypointSelection:
         {
-            DrawWayInfo(map, true);
+            if (startNodeSet) renderer->DrawPoint(graph.nodeLocations[startNodeID], 10, 1, 0, 0);
+            if (endNodeSet)   renderer->DrawPoint(graph.nodeLocations[endNodeID],   10, 0, 0, 1);
 
-            glm::vec2 mousePos(app.input->mouseX, app.input->mouseY);
-            
+            glm::vec2 mousePos(input->mouseX, input->mouseY);
+            osmium::Location mouseLoc = renderer->ScreenToLocation(mousePos);
+
             int nearestNodeID = 0;
 
-            if (app.mapReader.graph.TryGetNearestNodeID(app.renderer->ScreenToLocation(mousePos), nearestNodeID))
+            if (graph.TryGetNearestNodeID(mouseLoc, nearestNodeID))
             {
                 DrawNodeInfo(nearestNodeID);
-                auto nearestPoint = app.mapReader.graph.nodeLocations[nearestNodeID];
-                app.renderer->DrawPoint(nearestPoint.lon(), nearestPoint.lat(), 10, 0, 1, 0);
-            //    if(ImGui::IsMouseClicked(ImGuiMouseButton_Left))
-            //    {
-            //        //SetWaypoint(nearestNodeID);
-            //    }
+                auto& nearestPoint = graph.nodeLocations[nearestNodeID];
+                app.renderer->DrawPoint(nearestPoint, 10, 0, 1, 0);
+
+                if(ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+                {
+                    SetWaypoint(nearestNodeID);
+                }
             }
+
+            DrawWayInfo(map, true);
             break;
         }
+
         case MapNavigationState::Pause:
         {
-            app.input->controlCamera = false;
+            input->controlCamera = false;
             DrawAppNavWindow();
             break;
         }
@@ -195,7 +208,7 @@ void MapUI::DrawAppNavWindow()
 
 void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
 {
-    ImGui::Begin("Way info");
+    ImGui::Begin("Settings");
     
     if(ImGui::Button("DFS"))
     {
@@ -230,12 +243,14 @@ void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
 
     if(startNodeSet)
     {
-        //ImGui::Text("Start point: " + startNodeID);
+        std::string locationText = "Start point ID: " + std::to_string(startNodeID);
+        ImGui::Text("%s", locationText.c_str());
     }
 
     if(endNodeSet)
     {
-        //ImGui::Text("End point: " + endNodeID);
+        std::string locationText = "End point ID: " + std::to_string(endNodeID);
+        ImGui::Text("%s", locationText.c_str());
     }
 
     if(!isSelecting)
@@ -253,9 +268,13 @@ void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
             ResetWaypoints();
         }
 
-        if(ImGui::Button("Find way"))
+        if(startNodeSet && endNodeSet && ImGui::Button("Find way"))
         {
             //auto way = searchAlgo->FindWay(app.mapReader.graph, startNodeID, endNodeID);
+        }
+        if((startNodeSet || endNodeSet) && ImGui::Button("Reset waypoints"))
+        {
+            ResetWaypoints();
         }
     }
 
@@ -289,6 +308,6 @@ void MapUI::SetWaypoint(int ID)
 
 void MapUI::ResetWaypoints()
 {
-    startNodeSet, endNodeSet = false;
-    startNodeID, endNodeID = 0;
+    startNodeSet = false, endNodeSet = false;
+    startNodeID = 0, endNodeID = 0;
 }

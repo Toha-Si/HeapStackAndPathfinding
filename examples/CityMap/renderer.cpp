@@ -140,12 +140,12 @@ std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
     return vertices;
 }
 
-void Renderer::DrawPoint(float x, float y, float size, float red, float green, float blue)
+void Renderer::DrawPoint(osmium::Location nodePos, float size, float red, float green, float blue)
 {
     glPointSize(size);
     glColor3f(red, green, blue);
     glBegin(GL_POINTS);
-    glVertex2f(x, y);
+    glVertex2f(nodePos.lon(), nodePos.lat());
     glEnd();
     glColor3f(1, 1, 1); 
 }

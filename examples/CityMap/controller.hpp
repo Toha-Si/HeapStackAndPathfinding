@@ -11,8 +11,8 @@ class Input
         double mouseX = 0.0, mouseY = 0.0;
 
         void BindCallbacks(GLFWwindow* window);
-
     private:
+        int holdForFrames = 0;
         static void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
         static void CursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 };

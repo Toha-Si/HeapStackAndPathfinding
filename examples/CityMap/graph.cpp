@@ -48,6 +48,7 @@ bool Graph::TryGetNearestNodeID(osmium::Location point, int& foundNodeID)
     osmium::Location nearestLocation(bg::get<0>(nearestPoint), bg::get<1>(nearestPoint));
     double distance = osmium::geom::haversine::distance(point, nearestLocation);
 
+    //@Todo: scale with zoom of a camera
     if (distance > 100)
     {
         return false;

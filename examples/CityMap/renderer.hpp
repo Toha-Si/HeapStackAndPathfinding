@@ -34,7 +34,7 @@ class Renderer
         void CreateMap(Graph& map);
         void BindCallbacks(GLFWwindow* window);
         void Render(GLFWwindow* window);
-        void DrawPoint(float x, float y, float size, float r, float g, float b);
+        void DrawPoint(osmium::Location nodePos, float size, float r, float g, float b);
         osmium::Location ScreenToLocation(const glm::vec2& location);
         glm::vec2 CursorToCamPos(const glm::vec2& cursorPos);
 

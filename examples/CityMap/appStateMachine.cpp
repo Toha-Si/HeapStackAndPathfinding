@@ -95,11 +95,6 @@ void Application::Update()
     glfwPollEvents();
 }
 
-void Application::BindCallbacks()
-{
-
-}
-
 //SELECTION STATE
 void SelectionState::Enter(Application& app)
 {
@@ -163,6 +158,14 @@ void MapState::Enter(Application& app)
         delete app.ui;
     }
     state = MapNavigationState::Roaming;
+
+    auto& cam = app.renderer->cam;
+    auto& box = app.mapReader.graph.box;
+    double center_lon = 0.5f * (box.bottom_left().lon() + box.top_right().lon());
+    double center_lat = 0.5f * (box.bottom_left().lat() + box.top_right().lat());
+    cam.SetPosition(center_lon, center_lat);
+    cam.SetScale(0.5f * app.renderer->windowWidth / (cam.positionX - box.bottom_left().lon()));
+
     app.ui = new MapUI(app);
 }
 

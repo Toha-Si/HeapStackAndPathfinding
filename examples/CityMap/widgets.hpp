@@ -53,7 +53,7 @@ class MapUI : public UI
     private:
         //@Note: would refactor if it becomes too tiresome to extend
         int startNodeID, endNodeID;
-        bool startNodeSet, endNodeSet;
+        bool startNodeSet = false, endNodeSet = false;
         PathfindingAlgorithm* searchAlgo;
 
         void DrawWayInfo(MapState* map, bool isSelecting);
