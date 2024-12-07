@@ -1,5 +1,7 @@
 #include <renderer.hpp>
 #include <inputDataGL.hpp>
+#include <iostream>
+
 void Camera::SetPosition(float x, float y)
 {
     //@Todo: clamp values so can't go past a bounding box
@@ -15,12 +17,45 @@ void Camera::SetScale(float scale)
 
 void Renderer::CreateMap(Graph& map)
 {
-    this->vertices = CreateVerticesFrom(map);
+    this->map = &map;
+
+    this->vertices = VertBufferFrom(map);
 
     glGenBuffers(1, &VBO);
-
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);    
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+    glGenBuffers(1, &pathVBO);
+    glGenBuffers(1, &animVBO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, animVBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Renderer::SetPath(Graph& map, Path& way)
+{
+    std::vector<int> path = way.pointIDs;
+    this->pathSteps = way.searchSteps;
+
+    if(!pathVertices.empty())
+    {
+        pathVertices.clear();
+    }
+
+    for (size_t i = 0; i < path.size() - 1; ++i)
+    {
+        const osmium::Location& nodeFrom = map.nodeLocations.at(path[i]);
+        const osmium::Location& nodeTo = map.nodeLocations.at(path[i + 1]);
+        pathVertices.push_back(nodeFrom.lon());
+        pathVertices.push_back(nodeFrom.lat());
+        pathVertices.push_back(nodeTo.lon());
+        pathVertices.push_back(nodeTo.lat());
+    }
+
+    glBindBuffer(GL_ARRAY_BUFFER, pathVBO);
+    glBufferData(GL_ARRAY_BUFFER, pathVertices.size() * sizeof(float), pathVertices.data(), GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void Renderer::BindCallbacks(GLFWwindow* window)
@@ -68,8 +103,12 @@ void Renderer::ScrollCallback(GLFWwindow* window, double xoffset, double yoffset
     rndr->cam.positionY += (csrWorldBefore.y - csrWorldAfter.y);
 }
 
-void Renderer::RenderVertices(GLFWwindow* window)
+void Renderer::RenderVertices(GLFWwindow* window, GLuint& vbo, std::vector<float>& verts, const glm::vec3& color, float lineWidth)
 {
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glColor3f(color.r, color.g, color.b);
+    glLineWidth(lineWidth);
+
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-0.5f * windowWidth  / cam.scale + cam.positionX, 
@@ -80,17 +119,38 @@ void Renderer::RenderVertices(GLFWwindow* window)
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(2, GL_FLOAT, 0, nullptr);
-    glDrawArrays(GL_LINES, 0, vertices.size() / 2);
+    glDrawArrays(GL_LINES, 0, verts.size() / 2);
     glDisableClientState(GL_VERTEX_ARRAY);
+
+    glLineWidth(1.0f);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void Renderer::Render(GLFWwindow* window)
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    
+    if(!vertices.empty())
+    {
+        RenderVertices(window, VBO, vertices, {0.6f, 0.6f, 0.6f}, 1.0f);
+    }
 
-    if(vertices.empty()) return;
+    if(isShowingAlgoWork)
+    {
+        PrepareAnimationStep(1000);
+        RenderVertices(window, animVBO, animVertices, {0.0f, 0.0f, 1.0f}, 1.0f);
+    }
+    else
+    {
+        animVertices = std::vector<float>();
+        step = 0;
+    }
 
-    RenderVertices(window);
+    if(!pathVertices.empty())
+    {
+        RenderVertices(window, pathVBO, pathVertices, {1.0f, 0.0f, 0.0f}, 3.0f);
+    }
+
 }
 
 osmium::Location Renderer::ScreenToLocation(const glm::vec2& screenLoc)
@@ -119,7 +179,7 @@ glm::vec2 Renderer::CursorToCamPos(const glm::vec2& cursorPos)
     return cursorWorld;
 }
 
-std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
+std::vector<float> Renderer::VertBufferFrom(Graph& graph)
 {
     std::vector<float> vertices;
 
@@ -140,7 +200,7 @@ std::vector<float> Renderer::CreateVerticesFrom(Graph& graph)
     return vertices;
 }
 
-void Renderer::DrawPoint(osmium::Location nodePos, float size, float red, float green, float blue)
+void Renderer::DrawPoint(osmium::Location& nodePos, float size, float red, float green, float blue)
 {
     glPointSize(size);
     glColor3f(red, green, blue);
@@ -148,4 +208,40 @@ void Renderer::DrawPoint(osmium::Location nodePos, float size, float red, float 
     glVertex2f(nodePos.lon(), nodePos.lat());
     glEnd();
     glColor3f(1, 1, 1); 
+}
+
+void Renderer::PrepareAnimationStep(int stepSize)
+{
+    if(map == nullptr) return;
+
+    if (step >= pathSteps.size() - 1) return;
+
+    int maxStep = (step + stepSize >= pathSteps.size() - 1 ) ? 
+                            pathSteps.size() - 1 : 
+                            step + stepSize;
+
+    for(size_t i = step; i < maxStep; ++i)
+    {
+        osmium::Location& nodeFrom = map->nodeLocations[pathSteps.at(i).fromNodeID]; 
+        osmium::Location& nodeTo = map->nodeLocations[pathSteps.at(i).toNodeID]; 
+
+        animVertices.push_back(nodeFrom.lon());
+        animVertices.push_back(nodeFrom.lat());
+        animVertices.push_back(nodeTo.lon());
+        animVertices.push_back(nodeTo.lat());
+    }
+
+    size_t offset = (animVertices.size() - 4*(maxStep - step)) * sizeof(float);
+
+    glBindBuffer(GL_ARRAY_BUFFER, animVBO);
+    glBufferSubData(GL_ARRAY_BUFFER, offset, 4 * (maxStep - step) * sizeof(float), animVertices.data() + animVertices.size() - 4 * (maxStep - step));
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    step += maxStep - step;
+}
+
+Renderer::~Renderer()
+{
+    //delete pathSteps;
+    //delete map;
 }

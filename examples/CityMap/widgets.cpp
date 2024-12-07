@@ -1,5 +1,4 @@
 #include <widgets.hpp>
-#include <iostream>
 #include <imgui.h>
 
 //UI IMPLEMENTATION
@@ -144,7 +143,8 @@ void MapUI::Show()
                 ImGui::EndTooltip();
             }
 
-            DrawWayInfo(map, false);
+            DrawWayInfo();
+            DrawStateInfo(map, false);
             break;
         }
 
@@ -170,7 +170,8 @@ void MapUI::Show()
                 }
             }
 
-            DrawWayInfo(map, true);
+            DrawWayInfo();
+            DrawStateInfo(map, true);
             break;
         }
 
@@ -206,7 +207,7 @@ void MapUI::DrawAppNavWindow()
     ImGui::End();
 }
 
-void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
+void MapUI::DrawStateInfo(MapState* map, bool isSelecting)
 {
     ImGui::Begin("Settings");
     
@@ -270,8 +271,10 @@ void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
 
         if(startNodeSet && endNodeSet && ImGui::Button("Find way"))
         {
-            //auto way = searchAlgo->FindWay(app.mapReader.graph, startNodeID, endNodeID);
+            Path path = searchAlgo->FindWay(app.mapReader.graph, startNodeID, endNodeID, true);
+            app.renderer->SetPath(app.mapReader.graph, path);
         }
+
         if((startNodeSet || endNodeSet) && ImGui::Button("Reset waypoints"))
         {
             ResetWaypoints();
@@ -279,6 +282,32 @@ void MapUI::DrawWayInfo(MapState* map, bool isSelecting)
     }
 
     ImGui::End();
+}
+
+void MapUI::DrawWayInfo()
+{
+    if(searchAlgo->path.IsValid())
+    {
+        ImGui::Begin("Path info");
+        std::string lengthText = "Length: " + std::to_string(searchAlgo->path.GetLength() / 1000) + " km";
+        ImGui::Text("%s", lengthText.c_str());
+        std::string countText = "Node count: " + std::to_string(searchAlgo->path.GetNumberOfPoints());
+        ImGui::Text("%s", countText.c_str());
+
+        if(ImGui::Button("Animate") && !app.renderer->isShowingAlgoWork)
+        {
+            app.renderer->isShowingAlgoWork = true;
+        }
+
+        ImGui::SameLine();
+
+        if(ImGui::Button("Stop Animation") && app.renderer->isShowingAlgoWork)
+        {
+            app.renderer->isShowingAlgoWork = false;
+        }
+
+        ImGui::End();
+    }
 }
 
 void MapUI::DrawNodeInfo(int ID)

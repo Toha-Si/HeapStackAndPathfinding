@@ -19,7 +19,9 @@ int main(int argc, char** argv)
     }
 
     glDeleteBuffers(1, &app->renderer->VBO);
-
+    glDeleteBuffers(1, &app->renderer->pathVBO);
+    glDeleteBuffers(1, &app->renderer->animVBO);
+    
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();

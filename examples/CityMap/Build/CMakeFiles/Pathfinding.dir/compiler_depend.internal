@@ -5,8 +5,29 @@ CMakeFiles/Pathfinding.dir/algos.cpp.o
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/algos.cpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/algos.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/graph.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/coordinates.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/haversine.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/geom/util.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/collection.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/memory/item_iterator.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/box.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/entity_bits.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/item_type.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/location.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/node_ref_list.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/object.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/tag.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/timestamp.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/types.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/types_from_string.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/osm/way.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/compatibility.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/double.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/minmax.hpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/libosmium/include/osmium/util/misc.hpp
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h
@@ -3936,6 +3957,7 @@ CMakeFiles/Pathfinding.dir/appStateMachine.cpp.o
 
 CMakeFiles/Pathfinding.dir/controller.cpp.o
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/controller.cpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/algos.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/controller.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/graph.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/inputDataGL.hpp
@@ -5550,6 +5572,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/boost/version.hpp
  /usr/include/c++/9/algorithm
  /usr/include/c++/9/array
+ /usr/include/c++/9/atomic
  /usr/include/c++/9/backward/auto_ptr.h
  /usr/include/c++/9/backward/binders.h
  /usr/include/c++/9/bits/algorithmfwd.h
@@ -5557,6 +5580,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/bits/allocated_ptr.h
  /usr/include/c++/9/bits/allocator.h
  /usr/include/c++/9/bits/atomic_base.h
+ /usr/include/c++/9/bits/atomic_futex.h
  /usr/include/c++/9/bits/atomic_lockfree_defines.h
  /usr/include/c++/9/bits/basic_ios.h
  /usr/include/c++/9/bits/basic_ios.tcc
@@ -5595,6 +5619,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/bits/nested_exception.h
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/bits/ostream_insert.h
+ /usr/include/c++/9/bits/parse_numbers.h
  /usr/include/c++/9/bits/postypes.h
  /usr/include/c++/9/bits/predefined_ops.h
  /usr/include/c++/9/bits/ptr_traits.h
@@ -5607,6 +5632,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/bits/sstream.tcc
  /usr/include/c++/9/bits/std_abs.h
  /usr/include/c++/9/bits/std_function.h
+ /usr/include/c++/9/bits/std_mutex.h
  /usr/include/c++/9/bits/stl_algo.h
  /usr/include/c++/9/bits/stl_algobase.h
  /usr/include/c++/9/bits/stl_bvector.h
@@ -5636,6 +5662,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/bits/streambuf_iterator.h
  /usr/include/c++/9/bits/stringfwd.h
  /usr/include/c++/9/bits/uniform_int_dist.h
+ /usr/include/c++/9/bits/unique_lock.h
  /usr/include/c++/9/bits/unique_ptr.h
  /usr/include/c++/9/bits/unordered_map.h
  /usr/include/c++/9/bits/uses_allocator.h
@@ -5644,10 +5671,12 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/cctype
  /usr/include/c++/9/cerrno
  /usr/include/c++/9/cfloat
+ /usr/include/c++/9/chrono
  /usr/include/c++/9/climits
  /usr/include/c++/9/clocale
  /usr/include/c++/9/cmath
  /usr/include/c++/9/complex
+ /usr/include/c++/9/condition_variable
  /usr/include/c++/9/cstddef
  /usr/include/c++/9/cstdint
  /usr/include/c++/9/cstdio
@@ -5671,6 +5700,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/ext/string_conversions.h
  /usr/include/c++/9/ext/type_traits.h
  /usr/include/c++/9/functional
+ /usr/include/c++/9/future
  /usr/include/c++/9/initializer_list
  /usr/include/c++/9/iomanip
  /usr/include/c++/9/ios
@@ -5684,9 +5714,11 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/map
  /usr/include/c++/9/math.h
  /usr/include/c++/9/memory
+ /usr/include/c++/9/mutex
  /usr/include/c++/9/new
  /usr/include/c++/9/ostream
  /usr/include/c++/9/queue
+ /usr/include/c++/9/ratio
  /usr/include/c++/9/set
  /usr/include/c++/9/sstream
  /usr/include/c++/9/stack
@@ -5695,6 +5727,7 @@ CMakeFiles/Pathfinding.dir/controller.cpp.o
  /usr/include/c++/9/streambuf
  /usr/include/c++/9/string
  /usr/include/c++/9/system_error
+ /usr/include/c++/9/thread
  /usr/include/c++/9/tuple
  /usr/include/c++/9/type_traits
  /usr/include/c++/9/typeinfo
@@ -12748,6 +12781,7 @@ CMakeFiles/Pathfinding.dir/main.cpp.o
 
 CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/renderer.cpp
+ /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/algos.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/controller.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/graph.hpp
  /home/anton/Documents/polytech_proga/HeapStackAndPathfinding/examples/CityMap/inputDataGL.hpp
@@ -14362,6 +14396,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/boost/version.hpp
  /usr/include/c++/9/algorithm
  /usr/include/c++/9/array
+ /usr/include/c++/9/atomic
  /usr/include/c++/9/backward/auto_ptr.h
  /usr/include/c++/9/backward/binders.h
  /usr/include/c++/9/bits/algorithmfwd.h
@@ -14369,6 +14404,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/bits/allocated_ptr.h
  /usr/include/c++/9/bits/allocator.h
  /usr/include/c++/9/bits/atomic_base.h
+ /usr/include/c++/9/bits/atomic_futex.h
  /usr/include/c++/9/bits/atomic_lockfree_defines.h
  /usr/include/c++/9/bits/basic_ios.h
  /usr/include/c++/9/bits/basic_ios.tcc
@@ -14407,6 +14443,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/bits/nested_exception.h
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/bits/ostream_insert.h
+ /usr/include/c++/9/bits/parse_numbers.h
  /usr/include/c++/9/bits/postypes.h
  /usr/include/c++/9/bits/predefined_ops.h
  /usr/include/c++/9/bits/ptr_traits.h
@@ -14419,6 +14456,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/bits/sstream.tcc
  /usr/include/c++/9/bits/std_abs.h
  /usr/include/c++/9/bits/std_function.h
+ /usr/include/c++/9/bits/std_mutex.h
  /usr/include/c++/9/bits/stl_algo.h
  /usr/include/c++/9/bits/stl_algobase.h
  /usr/include/c++/9/bits/stl_bvector.h
@@ -14448,6 +14486,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/bits/streambuf_iterator.h
  /usr/include/c++/9/bits/stringfwd.h
  /usr/include/c++/9/bits/uniform_int_dist.h
+ /usr/include/c++/9/bits/unique_lock.h
  /usr/include/c++/9/bits/unique_ptr.h
  /usr/include/c++/9/bits/unordered_map.h
  /usr/include/c++/9/bits/uses_allocator.h
@@ -14456,10 +14495,12 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/cctype
  /usr/include/c++/9/cerrno
  /usr/include/c++/9/cfloat
+ /usr/include/c++/9/chrono
  /usr/include/c++/9/climits
  /usr/include/c++/9/clocale
  /usr/include/c++/9/cmath
  /usr/include/c++/9/complex
+ /usr/include/c++/9/condition_variable
  /usr/include/c++/9/cstddef
  /usr/include/c++/9/cstdint
  /usr/include/c++/9/cstdio
@@ -14483,10 +14524,12 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/ext/string_conversions.h
  /usr/include/c++/9/ext/type_traits.h
  /usr/include/c++/9/functional
+ /usr/include/c++/9/future
  /usr/include/c++/9/initializer_list
  /usr/include/c++/9/iomanip
  /usr/include/c++/9/ios
  /usr/include/c++/9/iosfwd
+ /usr/include/c++/9/iostream
  /usr/include/c++/9/istream
  /usr/include/c++/9/iterator
  /usr/include/c++/9/limits
@@ -14495,9 +14538,11 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/map
  /usr/include/c++/9/math.h
  /usr/include/c++/9/memory
+ /usr/include/c++/9/mutex
  /usr/include/c++/9/new
  /usr/include/c++/9/ostream
  /usr/include/c++/9/queue
+ /usr/include/c++/9/ratio
  /usr/include/c++/9/set
  /usr/include/c++/9/sstream
  /usr/include/c++/9/stack
@@ -14506,6 +14551,7 @@ CMakeFiles/Pathfinding.dir/renderer.cpp.o
  /usr/include/c++/9/streambuf
  /usr/include/c++/9/string
  /usr/include/c++/9/system_error
+ /usr/include/c++/9/thread
  /usr/include/c++/9/tuple
  /usr/include/c++/9/type_traits
  /usr/include/c++/9/typeinfo
@@ -16525,7 +16571,6 @@ CMakeFiles/Pathfinding.dir/widgets.cpp.o
  /usr/include/c++/9/iomanip
  /usr/include/c++/9/ios
  /usr/include/c++/9/iosfwd
- /usr/include/c++/9/iostream
  /usr/include/c++/9/istream
  /usr/include/c++/9/iterator
  /usr/include/c++/9/limits

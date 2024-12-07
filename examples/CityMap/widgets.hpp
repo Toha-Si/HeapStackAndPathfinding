@@ -54,9 +54,10 @@ class MapUI : public UI
         //@Note: would refactor if it becomes too tiresome to extend
         int startNodeID, endNodeID;
         bool startNodeSet = false, endNodeSet = false;
-        PathfindingAlgorithm* searchAlgo;
+        PathfindingAlgorithm* searchAlgo = nullptr;
 
-        void DrawWayInfo(MapState* map, bool isSelecting);
+        void DrawStateInfo(MapState* map, bool isSelecting);
+        void DrawWayInfo();
         void DrawNodeInfo(int ID);
         void DrawAppNavWindow();
 };
